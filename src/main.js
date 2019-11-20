@@ -1,6 +1,5 @@
-import Trump from "./Trump/trump";
+// // w tym pliku prawdopodobnie będzie tylko inicjalizacja aplikacji
 
-// w tym pliku prawdopodobnie będzie tylko inicjalizacja aplikacji
+import MainCtrl from './Trump/controllers/mainCtrl';
 
-const trump = new Trump();
-//trump.init();
+new MainCtrl().init();
