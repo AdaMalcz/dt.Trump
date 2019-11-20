@@ -1,4 +1,4 @@
-## Project 2 - Chess (CodersCamp)
+## Project 3 - Travel options comparison site (CodersCamp)
 
 ### How to run
 
