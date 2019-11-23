@@ -1,6 +1,8 @@
-class HeaderView {
+import MainView from "./mainView";
+  
+export default class HeaderView extends MainView{
   constructor() {
-    this.el = document.querySelector('#header')
+    super();
   }
   
   _createHeader(DOMElement){
@@ -44,8 +46,6 @@ class HeaderView {
   }
 
   init(){
-    this._createHeader(this.el);
+    this._createHeader(this.el.header);
   }
 }
-  
-export default HeaderView;
