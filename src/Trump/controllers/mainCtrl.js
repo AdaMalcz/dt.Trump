@@ -15,7 +15,10 @@ export default class TrumpCtrl {
     this.view = new MainView();
     this.model = new TestModel();
     this.model2 = new Test2Model();
-    this.bbcModel = new bbcModel();
+    this.bbcConf = {
+        cur : "EUR",
+    }
+    this.bbcModel = new bbcModel(this.bbcConf);
 
     }
 
@@ -36,13 +39,10 @@ export default class TrumpCtrl {
         // i tutaj wpisujemy co chcemy wyrenderować - nasz markup
         this.view.getTestMarkup(this.model.getData()) // przekazujemy pobrane dane (pobieramy fetchem w modelu) 
       );
-      let obj = {
-        cur = "EUR"
-      }
       this.view.render(
         this.view.el.mainContainer,
         
-        this.view.getTestMarkup(this.bbcModel.getData(obj))
+        this.view.getTestMarkup(this.bbcModel.getData())
       );
     };
 

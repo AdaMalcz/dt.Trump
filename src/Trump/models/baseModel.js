@@ -10,7 +10,7 @@ class BaseModel {
 
   // ponizej funkcje do ogarniecia url z dodatkowymi parametrami, nie ma za co :P 
   getParams() {
-    let params = '?key='+this.key;
+    let params = '?key='+this.key+'&';
     for (let option in this.options) {
 
       // Omijamy opcje ustawione na off :)           
