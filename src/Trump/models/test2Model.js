@@ -1,6 +1,6 @@
 import BaseModel from './baseModel';
 
-class TestModel extends BaseModel {
+class Test2Model extends BaseModel {
   constructor(optionsObj) {
     super(optionsObj);
   }
@@ -8,12 +8,12 @@ class TestModel extends BaseModel {
   // w modelach będą funkcje asynchroniczne i pomocnicze do nich aby przekzaywać dane w odpowiednim formacie, na potrzeby testów zwracam zwykły obiekt
   getData() {
     return {
-      transport: "By foot",
-      cost: "brak danych",
-      time: "45 minutes",
-      appURL: "https://www.google.com",
+      transport: "Travel with Donald",
+      cost: "100 000$",
+      time: "5 minutes",
+      appURL: "https://www.donaldjtrump.com/",
     }
   }
 }
 
-export default TestModel;
+export default Test2Model;

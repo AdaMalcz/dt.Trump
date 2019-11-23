@@ -4,15 +4,16 @@ class MainView {
   constructor() {
     // tutaj dodajemy sobie wszystkie elementy HTML na których zawartości będziemy pracować, przykład: 
     this.el = {
-      mainContainer: document.querySelector('.main-container')
-      // itd.
+      header: document.querySelector('#header'),
+      mainContainer: document.querySelector('.api-table'),
+      journeyTitle: document.querySelector('.journey')
       // itd.
     }
   }
 
   render(DOMElement, markup) {
-    this._clearElementContent(DOMElement);
-    DOMElement.insertAdjacentHTML('afterbegin', markup);
+    // this._clearElementContent(DOMElement);
+    DOMElement.insertAdjacentHTML('beforeend', markup);
   }
 
   _clearElementContent(element) {
