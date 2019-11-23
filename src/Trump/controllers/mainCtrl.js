@@ -35,7 +35,7 @@ export default class TrumpCtrl {
       );
       this.view.render(
         this.view.el.mainContainer,
-        this.view.getMainContentMarkup(this.model2.getData())
+        this.view.getTestMarkup(this.bbcModel.getData())
       );
     };
 
