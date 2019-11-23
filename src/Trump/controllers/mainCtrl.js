@@ -3,7 +3,7 @@ import HeaderView from '../views/headerView';
 import MainContentView from '../views/mainContentView';
 import SearchCtrl from './searchCtrl';
 import TestModel from '../models/testModel';
-import bbcModel from '../models/bbcModel';
+import Test2Model from '../models/test2Model';
 
 export default class TrumpCtrl {
   constructor() {
@@ -14,11 +14,7 @@ export default class TrumpCtrl {
     this.searchBtn = document.querySelector("#searchButton");
 
     this.model = new TestModel();
-    this.bbcConf = {
-        key : '7c4322b0a63e47bf9e1004480c447814',
-        cur : "EUR",
-    }
-    this.bbcModel = new bbcModel(this.bbcConf);
+    this.model2 = new Test2Model();
   }
 
   renderSomething() {
@@ -30,7 +26,7 @@ export default class TrumpCtrl {
     );
     this.view.render(
       this.view.el.apiContainer,
-      this.view.getMainContentMarkup(this.bbcModel.getData())
+      this.view.getMainContentMarkup(this.model2.getData())
     );
   };
 
