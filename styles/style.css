@@ -64,11 +64,13 @@ i {
     justify-content: center;
     align-content: center;
 }
-.fromXToY h2{
-    margin-bottom: 2rem;
-    text-align: center;
+.api-container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
-table{
+.journey h2{
+    margin-bottom: 2rem;
     text-align: center;
 }
 tbody{
