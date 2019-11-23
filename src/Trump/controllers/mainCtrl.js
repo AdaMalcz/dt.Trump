@@ -3,6 +3,7 @@ import HeaderView from '../views/headerView';
 import MainView from '../views/mainView';
 import TestModel from '../models/testModel';
 import Test2Model from '../models/test2Model';
+import bbcModel from '../models/bbcModel';
 
 export default class TrumpCtrl {
   constructor() {
@@ -14,6 +15,7 @@ export default class TrumpCtrl {
     this.view = new MainView();
     this.model = new TestModel();
     this.model2 = new Test2Model();
+    this.bbcModel = new bbcModel();
 
     }
 
@@ -34,9 +36,13 @@ export default class TrumpCtrl {
         // i tutaj wpisujemy co chcemy wyrenderować - nasz markup
         this.view.getTestMarkup(this.model.getData()) // przekazujemy pobrane dane (pobieramy fetchem w modelu) 
       );
+      let obj = {
+        cur = "EUR"
+      }
       this.view.render(
         this.view.el.mainContainer,
-        this.view.getTestMarkup(this.model2.getData())
+        
+        this.view.getTestMarkup(this.bbcModel.getData(obj))
       );
     };
 
