@@ -10,7 +10,7 @@ class bbcModel extends BaseModel {
 
   // w modelach będą funkcje asynchroniczne i pomocnicze do nich aby przekzaywać dane w odpowiednim formacie, na potrzeby testów zwracam zwykły obiekt
   getData() {
-    console.log("> " + this.getFullUrl() + this.getParams());
+    console.log("> " + this.getFullUrl());
     return {
       transport: "Travel with Donald",
       cost: "100 000$",

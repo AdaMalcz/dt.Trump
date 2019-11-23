@@ -17,7 +17,11 @@ export default class TrumpCtrl {
     this.model2 = new Test2Model();
     this.bbcConf = {
         key : '7c4322b0a63e47bf9e1004480c447814',
-        cur : "EUR",
+        cur : "PLN",
+        locale : "pl_PL",
+        format : "json",
+        fn : "Wrocław",
+        tn : "Warszawa"
     }
     this.bbcModel = new bbcModel(this.bbcConf);
 
