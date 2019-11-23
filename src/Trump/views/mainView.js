@@ -5,8 +5,10 @@ class MainView {
     // tutaj dodajemy sobie wszystkie elementy HTML na których zawartości będziemy pracować, przykład: 
     this.el = {
       header: document.querySelector('#header'),
-      mainContainer: document.querySelector('.api-table'),
-      journeyTitle: document.querySelector('.journey')
+      mainContainer: document.querySelector('.container'),
+      apiContainer: document.querySelector('.api-table'),
+      journeyTitle: document.querySelector('.journey'),
+      //searchBtn: document.querySelector("#searchButton"),
       // itd.
     }
   }
