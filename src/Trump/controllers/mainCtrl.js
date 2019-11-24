@@ -4,6 +4,7 @@ import MainContentView from '../views/mainContentView';
 import SearchCtrl from './searchCtrl';
 import TestModel from '../models/testModel';
 import Test2Model from '../models/test2Model';
+import GoogleMapsModel from '../models/googleMapsModel';
 
 export default class TrumpCtrl {
   constructor() {
@@ -15,6 +16,7 @@ export default class TrumpCtrl {
 
     this.model = new TestModel();
     this.model2 = new Test2Model();
+    this.GoogleMapsModel = new GoogleMapsModel();
   }
 
   renderSomething() {
@@ -26,7 +28,7 @@ export default class TrumpCtrl {
     );
     this.view.render(
       this.view.el.apiContainer,
-      this.view.getMainContentMarkup(this.model2.getData())
+      this.view.getMainContentMarkup(this.GoogleMapsModel.getData())
     );
   };
 
