@@ -1,4 +1,4 @@
-// Model z którego dziedziczą wszystkie inne modele UberModel, BoltModel itd, w modelach fetchujemy i zwracamy dane
+// Model z którego dziedziczą wszystkie inne modele API
 
 class BaseModel {
   constructor(optionsObj = {}) {
