@@ -1,20 +1,24 @@
 import MainContentView from '../views/mainContentView';
+import SearchModel from '../models/searchModel';
 
 export default class SearchCtrl {
     constructor(){
+        /*
         this.el = {
             // startId: document.querySelector("#startingAddress"),
             startValue: null,
             // metaId: document.querySelector("#destination"),
             metaValue: null,
-        }
+        } 
+        */
         this.view = new MainContentView();
+        this.model = new SearchModel();
     }
 
     handleClickOnSearch(){
-        this.el.start = document.querySelector("#startingAddress").value;
-        this.el.meta = document.querySelector("#destination").value;
-        this.view.init(this.el.start, this.el.meta);
+        this.model.start = document.querySelector("#startingAddress").value;
+        this.model.meta = document.querySelector("#destination").value;
+        this.view.init(this.model.start, this.model.meta);
     }
 
     //Tutaj będą wywoływane inne eventy
