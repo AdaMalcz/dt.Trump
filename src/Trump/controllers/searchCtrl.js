@@ -2,7 +2,7 @@ import MainContentView from '../views/mainContentView';
 import SearchModel from '../models/searchModel';
 
 export default class SearchCtrl {
-    constructor(){
+    constructor(par){
         /*
         this.el = {
             // startId: document.querySelector("#startingAddress"),
@@ -13,12 +13,17 @@ export default class SearchCtrl {
         */
         this.view = new MainContentView();
         this.model = new SearchModel();
+        this.trumpCtrl = par;
     }
 
     handleClickOnSearch(){
-        this.model.start = document.querySelector("#startingAddress").value;
-        this.model.meta = document.querySelector("#destination").value;
-        this.view.init(this.model.start, this.model.meta);
+        this.el.start = document.querySelector("#startingAddress").value;
+        this.el.meta = document.querySelector("#destination").value;
+        if ((typeof this.el.start === "string" && this.el.start && this.el.meta)) {
+            this.view.init(this.el.start, this.el.meta);
+            this.trumpCtrl.renderSomething()
+            document.querySelector("#map").style.height="400px"; // ustawiania wysokości mapy
+        }
     }
 
     //Tutaj będą wywoływane inne eventy

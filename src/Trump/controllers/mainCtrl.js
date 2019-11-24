@@ -2,31 +2,53 @@
 import HeaderView from '../views/headerView';
 import MainContentView from '../views/mainContentView';
 import SearchCtrl from './searchCtrl';
-import TestModel from '../models/testModel';
-import Test2Model from '../models/test2Model';
+// import TestModel from '../models/testModel';
+import DrivingModel from '../models/drivingModel';
+import WalkingModel from '../models/walkingModel';
+import BicyclingModel from '../models/bicyclingModel';
+import TransitModel from '../models/transitModel';
+// import Test2Model from '../models/test2Model';
+
 
 export default class TrumpCtrl {
   constructor() {
     // przypisujemy controllery do state w tym miejscu
     this._headerView = new HeaderView();
     this.view = new MainContentView();
-    this.search = new SearchCtrl();
+    this.search = new SearchCtrl(this);
     this.searchBtn = document.querySelector("#searchButton");
+    // this.model = new TestModel();
+    this.modelDriving = new DrivingModel();
+    this.modelWalking = new WalkingModel();
+    this.modelBicycling = new BicyclingModel();
+    this.modelTransit = new TransitModel();
 
-    this.model = new TestModel();
-    this.model2 = new Test2Model();
   }
 
-  renderSomething() {
+  async renderSomething() {
+    this.view._clearElementContent(this.view.el.apiContainer);
+    // this.view.render(
+    //   // podajemy w jakim elemencie chcemy coś wyrenderować
+    //   this.view.el.apiContainer,
+    //   // i tutaj wpisujemy co chcemy wyrenderować - nasz markup
+    //   await this.view.getMainContentMarkup(this.model.getData()) // przekazujemy pobrane dane (pobieramy fetchem w modelu) 
+    // );
     this.view.render(
-      // podajemy w jakim elemencie chcemy coś wyrenderować
       this.view.el.apiContainer,
-      // i tutaj wpisujemy co chcemy wyrenderować - nasz markup
-      this.view.getMainContentMarkup(this.model.getData()) // przekazujemy pobrane dane (pobieramy fetchem w modelu) 
+      await this.view.getMainContentMarkup(this.modelDriving.getData())
     );
     this.view.render(
       this.view.el.apiContainer,
-      this.view.getMainContentMarkup(this.model2.getData())
+      await this.view.getMainContentMarkup(this.modelWalking.getData())
+    );
+    this.view.render(
+      this.view.el.apiContainer,
+      await this.view.getMainContentMarkup(this.modelBicycling.getData())
+    );
+    this.view.render(
+      this.view.el.apiContainer,
+      await this.view.getMainContentMarkup(this.modelTransit.getData())
+
     );
   };
 
@@ -34,7 +56,7 @@ init() {
   console.log('Trump init...');
   
   this._headerView.init();
-  this.renderSomething();
+  // this.renderSomething();
 
   this.search.init();
   }

@@ -9,7 +9,8 @@ class TestModel extends BaseModel {
   getData() {
     return {
       transport: "By foot",
-      cost: "brak danych",
+      name: "WALKING",
+      cost: 0,
       time: "45 minutes",
       appURL: "https://www.google.com",
     }
