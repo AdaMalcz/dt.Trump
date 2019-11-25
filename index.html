@@ -27,27 +27,21 @@
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
 
   <link rel="stylesheet" href="styles/style.css" />
-  <link rel="stylesheet" href="styles/form.css" />
   <script src="dist/index.js" defer></script>
 </head>
 
 <body>
 
   <header id="header">
-    <h1 class="">Trump travel - najszybsze i najtańsze podróże w Twoim mieście!</h1>
-    <h2 class="">Wyszukaj swój przejazd:</h2>
-    <form class="">
+     <h1>Trump travel - najszybsze i najtańsze podróże w Twoim mieście!</h1>
+    <h2>Wyszukaj swój przejazd:</h2>
+    <form>
       <div class="location-input">
         <i id="location" class="far fa-dot-circle icon"></i>
-        <input id="startingAddress" class="" type="text" placeholder="Skąd chcesz wyruszyć?">
+        <input id="startingAddress" type="text" placeholder="Skąd chcesz wyruszyć?">
       </div>
-      <input id="destination" class="" type="text" placeholder="Cel podróży">
-      <div id="dateForm">
-        <h3>Zmień czas przejazdu:</h3> <!--  + switch zmienia opcje na czas przyjazdu/odjazdu -->
-        <input id="dateInput" type="date" class="dateInput">
-        <input id="timeInput" type="time" class="timeInput">
-      </div>
-      <button id="searchButton" class=" btn btn-warning" type="submit"><i class="icon fas fa-search"></i></button>
+      <input id="destination" type="text" placeholder="Cel podróży">
+      <button id="searchButton" type="submit" class="icon fas fa-search">
     </form>
   </header>
 
