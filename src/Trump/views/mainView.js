@@ -10,6 +10,8 @@ class MainView {
       journeyTitle: document.querySelector('.journey'),
       startingAddress: document.querySelector('#startingAddress'),
       destination: document.querySelector('#destination'),
+      date: document.querySelector('#dateInput'),
+      time: document.querySelector('#timeInput'),
       //searchBtn: document.querySelector("#searchButton"),
       // itd.
     }
@@ -45,9 +47,7 @@ class MainView {
   }
 
   _setAttributes(elementId, attribute, value) {
-    let el;
-    el = document.getElementById(elementId);
-    el.setAttribute(attribute, value);
+    document.getElementById(`${elementId}`).setAttribute(attribute, value);
   }
 }
 
