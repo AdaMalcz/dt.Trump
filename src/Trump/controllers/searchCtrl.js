@@ -3,14 +3,12 @@ import SearchModel from '../models/searchModel';
 
 export default class SearchCtrl {
     constructor(par){
-        /*
         this.el = {
             // startId: document.querySelector("#startingAddress"),
             startValue: null,
             // metaId: document.querySelector("#destination"),
             metaValue: null,
         } 
-        */
         this.view = new MainContentView();
         this.model = new SearchModel();
         this.trumpCtrl = par;
