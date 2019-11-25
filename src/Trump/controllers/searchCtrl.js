@@ -1,6 +1,7 @@
 import MainContentView from '../views/mainContentView';
 import SearchModel from '../models/searchModel';
 
+
 export default class SearchCtrl {
     constructor(par){
         this.el = {
@@ -30,8 +31,12 @@ export default class SearchCtrl {
 
     handleClickOnLocation(){
         if (navigator.geolocation)
-            navigator.geolocation.getCurrentPosition((position) => {
-                this.view.el.startingAddress.value = `${position.coords.latitude}, ${position.coords.longitude}`
+            navigator.geolocation.getCurrentPosition(async (position) => {
+                this.model.coors = [position.coords.latitude, position.coords.longitude];
+                //this.view.el.startingAddress.value = `${position.coords.latitude}, ${position.coords.longitude}`
+                await this.model.displayAdress(this.model.coors);
+                this.model.start = this.model.address;
+                this.view.el.startingAddress.value = this.model.address;
         })
         else{
             window.alert('Geolocation is not supported by your browser')
