@@ -12,7 +12,7 @@ class DrivingModel extends BaseModel {
       name: "DRIVING",
       cost: 30/100,
       time: "",
-      appURL: "https://www.google.com/",
+      naviLink: "https://www.google.com/",
     }
   }
 }

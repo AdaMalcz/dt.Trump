@@ -2,12 +2,10 @@
 import HeaderView from '../views/headerView';
 import MainContentView from '../views/mainContentView';
 import SearchCtrl from './searchCtrl';
-// import TestModel from '../models/testModel';
 import DrivingModel from '../models/drivingModel';
 import WalkingModel from '../models/walkingModel';
 import BicyclingModel from '../models/bicyclingModel';
 import TransitModel from '../models/transitModel';
-// import Test2Model from '../models/test2Model';
 
 
 export default class TrumpCtrl {
@@ -16,8 +14,6 @@ export default class TrumpCtrl {
     this._headerView = new HeaderView();
     this.view = new MainContentView();
     this.search = new SearchCtrl(this);
-    this.searchBtn = document.querySelector("#searchButton");
-    // this.model = new TestModel();
     this.modelDriving = new DrivingModel();
     this.modelWalking = new WalkingModel();
     this.modelBicycling = new BicyclingModel();

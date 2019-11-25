@@ -12,7 +12,7 @@ class TransitModel extends BaseModel {
       name: "TRANSIT",
       cost: "?",
       time: "",
-      appURL: "https://www.google.com/",
+      naviLink: "https://www.google.com/",
     }
   }
 }

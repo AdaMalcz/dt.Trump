@@ -12,7 +12,7 @@ class WalkingModel extends BaseModel {
       name: "WALKING",
       cost: 0,
       time: "",
-      appURL: "https://www.google.com/",
+      naviLink: "https://www.google.com/",
     }
   }
 }

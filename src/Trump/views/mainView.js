@@ -8,6 +8,8 @@ class MainView {
       mainContainer: document.querySelector('.container'),
       apiContainer: document.querySelector('.api-table'),
       journeyTitle: document.querySelector('.journey'),
+      startingAddress: document.querySelector('#startingAddress'),
+      destination: document.querySelector('#destination'),
       //searchBtn: document.querySelector("#searchButton"),
       // itd.
     }
@@ -26,6 +28,26 @@ class MainView {
       el = element;
     }
     el.innerHTML = '';
+  }
+  
+  _createElement(DOMElement, element, innerText, id, classes) {
+    let el;
+    if (typeof DOMElement === 'string'){
+      DOMElement = document.querySelector(DOMElement);
+    }
+    el = document.createElement(element);
+    el.innerHTML = innerText || '';
+    if (id)
+      el.id = id;
+    if (classes)
+      el.setAttribute('class', classes);
+    DOMElement.appendChild(el);
+  }
+
+  _setAttributes(elementId, attribute, value) {
+    let el;
+    el = document.getElementById(elementId);
+    el.setAttribute(attribute, value);
   }
 }
 

@@ -6,43 +6,27 @@ export default class HeaderView extends MainView{
   }
   
   _createHeader(DOMElement){
-    const title = document.createElement('h1');
-    title.innerText = "Trump travel - najszybsze i najtańsze podróże w Twoim mieście!";
+    // Uncaught TypeError: Cannot read property 'addEventListener' of null
 
-    const text = document.createElement('h2');
-    text.innerText = "Wyszukaj swój przejazd:";
+    // this._createElement(DOMElement,'h1','Trump travel - najszybsze i najtańsze podróże w Twoim mieście!');
+    // this._createElement(DOMElement,'h2','Wyszukaj swój przejazd:');
+    // this._createElement(DOMElement,'form');
 
-    const form = document.createElement('form');
+    // this._createElement('form','input', '', '#startingAddress');
+    // this._createElement('form','input', '', '#destination');
+    // this._createElement('form','button', '', '#searchButton', 'fas fa-search');
 
-    const startingAddress = document.createElement('input');
-    startingAddress.setAttribute("type", "text");
-    startingAddress.setAttribute("placeholder", "Skąd chcesz wyruszyć?");
-
-    const destination = document.createElement('input');
-    destination.setAttribute("type", "text");
-    destination.setAttribute("placeholder", "Cel podróży");
-        
-    const submitButton = document.createElement('button');
-    submitButton.setAttribute("type", "submit");
-    
-    submitButton.id = "searchButton";
-    startingAddress.id = "startingAddress";
-    destination.id = "destination";
-
-    DOMElement.appendChild(title);
-    DOMElement.appendChild(text);
-    DOMElement.appendChild(form);
-    form.appendChild(startingAddress);
-    form.appendChild(destination);
-    form.appendChild(submitButton);    
+    // this._setAttributes('#startingAddress','type','text');
+    // this._setAttributes('#startingAddress','placeholder','Skąd chcesz wyruszyć?');
+    // this._setAttributes('#destination','type','text');
+    // this._setAttributes('#destination','placeholder','Cel podróży');
+    // this._setAttributes('#searchButton','type','submit'); 
 
     // *** INSERT BOOTSTRAP CLASSES HERE *** //
-    title.className = "title";
-    text.className = "text";
-    form.className = "form";
-    startingAddress.className = "input";
-    destination.className = "input";
-    submitButton.className = "fas fa-search button";
+    // nadpisuje klasy!
+    // this._setAttributes('#startingAddress','class','');
+    // this._setAttributes('#destination','class','');
+    // this._setAttributes('#searchButton','class','');
   }
 
   init(){

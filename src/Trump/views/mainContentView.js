@@ -13,6 +13,7 @@ export default class MainContentView extends MainView{
   
       window.showPoints();
     };
+
     window.calculateAndDisplayRoute = this.calculateAndDisplayRoute;
     window.showPoints = this.showPoints;
 
@@ -46,7 +47,7 @@ export default class MainContentView extends MainView{
             <td rowspan="2" class="transport"><a onclick="calculateAndDisplayRoute('${fetchedObj.name}')">${fetchedObj.transport}</a></td>
             <td class="caption top">Czas:</td>
             <td class="value top">${resp.duration.text}</td>
-            <td rowspan="2" class="link"><a href=${fetchedObj.appURL} target="_blank">Przejdż do aplikacji</a></td>
+            <td rowspan="2" class="link"><a href=${fetchedObj.naviLink} target="_blank">Przejdż do nawigacji</a></td>
           </tr>
           <tr>
             <td class="caption bottom">Koszt:</td>
@@ -58,7 +59,6 @@ export default class MainContentView extends MainView{
   }
 
   init(start, meta){
-    if (typeof start === "string" && start && meta) { //jest adresem
       this.el.journeyTitle.innerHTML = `<h2>Podróż z ${start} do ${meta}</h2>`;
       //tutaj będzie kod z wyświetlaniem danych z api
 
@@ -69,10 +69,6 @@ export default class MainContentView extends MainView{
       if (google_api) {
         showPoints();
       } 
-
-    }
-    else
-      this.el.journeyTitle.innerHTML = `<h2>Uzupełnij oba pola z adresem aby wyszukać przejazd!</h2>`
   }
 
   showPoints() {

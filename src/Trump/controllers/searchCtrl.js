@@ -17,12 +17,26 @@ export default class SearchCtrl {
     }
 
     handleClickOnSearch(){
-        this.el.start = document.querySelector("#startingAddress").value;
-        this.el.meta = document.querySelector("#destination").value;
-        if ((typeof this.el.start === "string" && this.el.start && this.el.meta)) {
-            this.view.init(this.el.start, this.el.meta);
+        this.model.start = document.querySelector("#startingAddress").value;
+        this.model.meta = document.querySelector("#destination").value;
+        if ((typeof this.model.start === "string" && this.model.start && this.model.meta)) {
+            this.view.init(this.model.start, this.model.meta);
             this.trumpCtrl.renderSomething()
             document.querySelector("#map").style.height="400px"; // ustawiania wysokości mapy
+        }
+        else if (!this.model.start) {
+        }
+        else if (!this.model.meta) {
+        }  
+    }
+
+    handleClickOnLocation(){
+        if (navigator.geolocation)
+            navigator.geolocation.getCurrentPosition((position) => {
+                this.view.el.startingAddress.value = `${position.coords.latitude}, ${position.coords.longitude}`
+        })
+        else{
+            window.alert('Geolocation is not supported by your browser')
         }
     }
 
@@ -32,6 +46,9 @@ export default class SearchCtrl {
             ev.preventDefault();
             this.handleClickOnSearch();
             this.view.el.mainContainer.scrollIntoView();
+        });
+        document.querySelector("#location").addEventListener("click", () => {
+            this.handleClickOnLocation();
         });
     }
 
