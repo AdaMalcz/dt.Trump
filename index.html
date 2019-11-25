@@ -33,17 +33,27 @@
 <body>
 
   <header id="header">
+     <h1>Trump travel - najszybsze i najtańsze podróże w Twoim mieście!</h1>
+    <h2>Wyszukaj swój przejazd:</h2>
+    <form>
+      <div class="location-input">
+        <i id="location" class="far fa-dot-circle icon"></i>
+        <input id="startingAddress" type="text" placeholder="Skąd chcesz wyruszyć?">
+      </div>
+      <input id="destination" type="text" placeholder="Cel podróży">
+      <button id="searchButton" type="submit" class="icon fas fa-search">
+    </form>
   </header>
 
   <main id="main" class="container wrapper">
       <section class="journey"></section>
-      <section class="api-container">
+      <section class="api-container col-md-6">
         <table class="api-table">
         </table>
       </section>
-  </main>
-  <!-- Poniżej dodawana jest div z mapą, trzeba go przenieść w odpowiednie miejsce -->
-  <div id="map"></div> 
+      <section id="map" class="col-md-6"></section> 
+    </main>
+  
 </body>
 
 </html>
