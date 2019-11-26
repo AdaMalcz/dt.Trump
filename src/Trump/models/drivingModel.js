@@ -39,8 +39,9 @@ class DrivingModel extends BaseModel {
       )
     }).catch(console.error);
     this.time = trans.duration.text;
-    this.dist = trans.distance.value / 1000;
-    this.cost = "?"
+    this.dist = Math.round(trans.distance.value / 100)/10;
+    this.cost = "?";
+    this.naviLink="https://www.google.com/maps/dir/?api=1&origin="+window.origin_place.split(' ').join('+')+"&destination="+window.destination_place.split(' ').join('+')+"&travelmode=driving";
   }
 }
 
