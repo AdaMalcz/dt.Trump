@@ -1,0 +1,212 @@
+#header{
+  background-image: url(../img/bg.jpg);
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-content: center;
+}
+h1{
+  font-size: 4rem;
+}
+h2{
+  font-size: 3rem;
+  margin: 2rem auto 2rem auto;
+}
+#header > h1, #header > h2{
+  width: 80%;
+  color: var(--light);
+  text-shadow: -1px 0 var(--dark), 0 1px var(--dark), 1px 0 var(--dark), 0 -1px var(--dark);
+  text-align: center;
+}
+span.app-name{
+  text-transform: uppercase;
+  font-size: 5rem;
+  line-height: 9rem;
+}
+
+/* FORM STYLES */
+
+form{
+  width: 70%;
+  max-width: 500px;
+  display: flex;
+  flex-flow: wrap row;
+  align-self: center;
+  justify-content: center;
+  align-content: center;
+}
+.geolocation-input, input#destination, #searchButton{
+  margin: 0.5rem;
+  position: relative;
+  flex: 1 1 100%;
+}
+.geolocation-input input{ 
+  width: 100%;
+}
+.icon {
+  font-size: 2rem;
+}
+.geolocation-input i {
+  background-color: white;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  cursor: pointer;
+  padding: 0.5rem; 
+}
+.geolocation-input i:hover {
+  color: var(--greyShade);
+}
+input#startingAddress, input#destination{
+  text-align: left;
+  min-width: 200px;
+}
+input, #searchButton{
+  padding: 1rem;
+  border: 1px solid var(--secondColor);
+  border-radius: 5px;
+  font-size: 1.5rem;
+}
+
+.date-form{
+  width: 70%;
+  position: relative;
+  flex: 1 1 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.onoffswitch {
+  text-align: center;
+  margin: 0.5rem;
+  flex: 2;
+  position: relative;
+  min-width: 200px;
+  max-width: 200px;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+  display: none;
+}
+.onoffswitch-label {
+  margin: 0;
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--secondColor);
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: var(--mainColor);
+}
+.onoffswitch-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 30px;
+  padding: 0;
+  line-height: 30px;
+  font-size: 14px;
+  color: var(--light);
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+  content: "czas wyjazdu";
+  color: var(--light);
+  text-shadow: -1px 0 var(--dark), 0 1px var(--dark), 1px 0 var(--dark), 0 -1px var(--dark);
+  text-align: center;
+}
+.onoffswitch-inner:after {
+  content: "czas przyjazdu";
+  color: var(--light);
+  text-shadow: -1px 0 var(--dark), 0 1px var(--dark), 1px 0 var(--dark), 0 -1px var(--dark);
+  text-align: center;
+}
+.onoffswitch-switch {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background: var(--light);
+  background-image: url(../img/clock-regular.svg);
+  position: absolute;
+  top: 1rem;
+  right: 160px;
+  border-radius: 50%;
+  transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  right: 0px; 
+}
+input.date-input, input.time-input {
+  margin: 0.5rem;
+  flex: 1;
+  height: 43px;
+  max-width: 200px;
+}
+input.date-input {
+  min-width: 130px;
+}
+input.time-input {
+  min-width: 70px;
+}
+#searchButton{
+  cursor: pointer;
+  max-width: 100px;
+  margin-top: 2rem;
+  text-align: center;
+  align-self: center;
+  color: var(--light);
+  text-shadow: -1px 0 var(--dark), 0 1px var(--dark), 1px 0 var(--dark), 0 -1px var(--dark);
+  background-color: var(--mainColor);
+}
+.red::-webkit-input-placeholder{ 
+  color: var(--warning); /* WebKit, Blink, Edge */
+}
+.red:-moz-placeholder{
+  color: var(--warning); /* Mozilla Firefox 4 to 18 */
+}
+.red::-moz-placeholder{
+  color: var(--warning); /* Mozilla Firefox 19+ */
+}
+.red::-ms-input-placeholder{
+  color: var(--warning); /* Microsoft Edge */
+}
+.red:-ms-input-placeholder{
+  color: var(--warning); /* Internet Explorer 10-11 */
+}
+
+@media screen and (max-width: 620px){
+  .onoffswitch {
+    flex: 1 1 100%;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    min-width: 200px;
+  }
+  input.date-input, input.time-input{
+    flex: 1 1 45%;
+  }
+}
+@media screen and (max-width: 390px){
+  input.date-input, input.time-input{
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: 200px;
+  }
+}

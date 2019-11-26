@@ -8,6 +8,8 @@ export default class SearchModel {
     this.address = 'none';
     this.date = '';
     this.time = '';
+    this.arrival_departure = '';
+    this.geolocation = '';
   }
   takeDateFromInput(){
     let year = this.date.substring(0,4);
@@ -18,9 +20,9 @@ export default class SearchModel {
 
     return new Date(year,month-1,day,hour,minutes)
 
-  
+  }
   //translate coordinates to address
-  async getAdress(coordinates) {
+  async getAddress(coordinates) {
     try {
       let geocodeCoordinates = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.coors[0]},${this.coors[1]}&key=${process.env.API_GM_KEY}`
       const rawData = await fetch(geocodeCoordinates);
@@ -31,10 +33,10 @@ export default class SearchModel {
     }
   }
 
-  async displayAdress(coordinates) {
-    const data = await this.getAdress(coordinates);
-    const dataAdress = await data.results[0].formatted_address;
-    this.address = await dataAdress;
+  async displayAddress(coordinates) {
+    const data = await this.getAddress(coordinates);
+    const dataAddress = await data.results[0].formatted_address;
+    this.address = await dataAddress;
   }
 
 }
