@@ -1,11 +1,11 @@
 import MainView from "./mainView";
-  
-export default class HeaderView extends MainView{
+
+export default class HeaderView extends MainView {
   constructor() {
     super();
   }
-  
-  _createHeader(DOMElement){
+
+  _createHeader(DOMElement) {
     // Uncaught TypeError: Cannot read property 'addEventListener' of null
 
     // this._createElement(DOMElement,'h1','Trump travel - najszybsze i najtańsze podróże w Twoim mieście!');
@@ -28,7 +28,7 @@ export default class HeaderView extends MainView{
     // this._setAttributes('#destination','class','');
     // this._setAttributes('#searchButton','class','');
     let currentMonth, currentDay;
-    (new Date().getMonth() < 9) ? currentMonth = `0${new Date().getMonth()+1}` : currentMonth = new Date().getMonth()+1;
+    (new Date().getMonth() < 9) ? currentMonth = `0${new Date().getMonth() + 1}` : currentMonth = new Date().getMonth() + 1;
     (new Date().getDate() < 10) ? currentDay = `0${new Date().getDate()}` : currentDay = new Date().getDate();
     let currentDate = `${new Date().getFullYear()}-${currentMonth}-${currentDay}`;
     this._setAttributes('dateInput', 'value', currentDate);
@@ -40,7 +40,7 @@ export default class HeaderView extends MainView{
     this._setAttributes('timeInput', 'value', currentTime);
   }
 
-  init(){
+  init() {
     this._createHeader(this.el.header);
   }
 }

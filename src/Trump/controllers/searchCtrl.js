@@ -1,15 +1,17 @@
 import MainContentView from '../views/mainContentView';
 import SearchModel from '../models/searchModel';
+import MapCtrl from './mapCtrl'
 
 
 export default class SearchCtrl {
-    constructor(par){
+    constructor(par) {
         this.view = new MainContentView();
         this.model = new SearchModel();
+        this.map = new MapCtrl();
         this.trumpCtrl = par;
     }
 
-    handleClickOnSearch(){
+    async handleClickOnSearch() {
         this.model.start = this.view.el.startingAddress.value;
         this.model.meta = this.view.el.destination.value;
         this.model.date = this.view.el.date.value;
@@ -17,18 +19,20 @@ export default class SearchCtrl {
         if ((typeof this.model.start === "string" && this.model.start && this.model.meta)) {
             this.view.el.mainContainer.style.display = "initial";
             this.view.init(this.model.start, this.model.meta);
+            // await this.map.route();
+            // console.log(resp.distance.value)
             this.trumpCtrl.renderSomething()
-            document.querySelector("#map").style.height="400px"; // ustawiania wysokości mapy
+            document.querySelector("#map").style.height = "400px"; // ustawiania wysokości mapy
         }
         else {
             if (!this.model.start)
                 this.view.el.startingAddress.classList.add('red');
-            if (!this.model.meta)   
+            if (!this.model.meta)
                 this.view.el.destination.classList.add('red');
         }
     }
 
-    handleClickOnLocation(){
+    handleClickOnLocation() {
         if (navigator.geolocation)
             navigator.geolocation.getCurrentPosition(async (position) => {
                 this.model.coors = [position.coords.latitude, position.coords.longitude];
@@ -36,14 +40,14 @@ export default class SearchCtrl {
                 await this.model.displayAdress(this.model.coors);
                 this.model.start = this.model.address;
                 this.view.el.startingAddress.value = this.model.address;
-        })
-        else{
+            })
+        else {
             window.alert('Geolocation is not supported by your browser')
         }
     }
 
     //Tutaj będą wywoływane inne eventy
-    _setListeners(){
+    _setListeners() {
         document.querySelector("#searchButton").addEventListener("click", ev => {
             ev.preventDefault();
             this.handleClickOnSearch();
@@ -54,7 +58,7 @@ export default class SearchCtrl {
         });
     }
 
-    init(){
+    init() {
         this._setListeners();
     }
 }
