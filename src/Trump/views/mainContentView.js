@@ -13,18 +13,18 @@ export default class MainContentView extends MainView{
       return `
             <tbody>
             <tr>
-              <td rowspan="2" class="transport"><a onclick="calculateAndDisplayRoute('${fetchedObj.name}')">${fetchedObj.transport}</a></td>
+              <td rowspan="3" class="transport"><a onclick="calculateAndDisplayRoute('${fetchedObj.name}')">${fetchedObj.transport}</a></td>
               <td class="caption top">Czas:</td>
               <td class="value top">${fetchedObj.time}</td>
-              <td rowspan="2" class="link"><a href=${fetchedObj.naviLink} target="_blank">Przejdż do nawigacji</a></td>
+              <td rowspan="3" class="link"><a href=${fetchedObj.naviLink} target="_blank">Przejdż do nawigacji</a></td>
             </tr>
             <tr>
               <td class="caption">Odległość:</td>
-              <td class="value">${fetchedObj.dist}km</td>
+              <td class="value">${fetchedObj.dist} km</td>
             </tr>
             <tr>
               <td class="caption bottom">Koszt:</td>
-              <td class="value bottom">${fetchedObj.cost}zł</td>
+              <td class="value bottom">${fetchedObj.cost} zł</td>
             </tr>
             </tbody>
             <br>
@@ -40,7 +40,7 @@ export default class MainContentView extends MainView{
             </tr>
             <tr>
               <td class="caption bottom">Odległość:</td>
-              <td class="value bottom">${fetchedObj.dist}km</td>
+              <td class="value bottom">${fetchedObj.dist} km</td>
             </tr>
             </tbody>
             <br>
