@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
 
-  <title>Trump Travel</title>
+  <title>TrumpTravel - najszybsze i najtańsze podróże w Twoim mieście!</title>
   <meta name="description"
     content="Find the fastest or the cheapest way to travel with our omniscient Trump. Compare different transport options and choose the best one." />
   <meta name="keywords" content="jakdojade, uber, bolt, Coders Camp, CodersCamp" />
@@ -22,42 +22,55 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> 
 
-  <link href="https://fonts.googleapis.com/css?family=Oswald:300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:300|Roboto:300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
 
   <link rel="stylesheet" href="styles/style.css" />
-  <link rel="stylesheet" href="styles/form.css" />
+  <link rel="stylesheet" href="styles/header.css" />
   <script src="dist/index.js" defer></script>
 </head>
 
 <body>
 
   <header id="header">
-    <h1 class="">Trump travel - najszybsze i najtańsze podróże w Twoim mieście!</h1>
-    <h2 class="">Wyszukaj swój przejazd:</h2>
-    <form class="">
-      <div class="location-input">
-        <i id="location" class="far fa-dot-circle icon"></i>
-        <input id="startingAddress" class="" type="text" placeholder="Skąd chcesz wyruszyć?">
+    <h1><span class="app-name">TrumpTravel</span><br>Najszybsze i najtańsze podróże w Twoim mieście!</h1>
+    <h2>Wyszukaj swój przejazd:</h2>
+    <form>
+      
+      <div class="date-form">
+        <div class="onoffswitch">
+          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+          <label class="onoffswitch-label" for="myonoffswitch">
+              <span class="onoffswitch-inner"></span>
+              <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+        <input id="dateInput" type="date" class="date-input">
+        <input id="timeInput" type="time" class="time-input">
       </div>
-      <input id="destination" class="" type="text" placeholder="Cel podróży">
-      <div id="dateForm">
-        <h3>Zmień czas przejazdu:</h3> <!--  + switch zmienia opcje na czas przyjazdu/odjazdu -->
-        <input id="dateInput" type="date" class="dateInput">
-        <input id="timeInput" type="time" class="timeInput">
-      </div>
-      <button id="searchButton" class=" btn btn-warning" type="submit"><i class="icon fas fa-search"></i></button>
+      <div class="geolocation-input">
+          <i id="geolocation" class="far fa-dot-circle icon"></i>
+          <input id="startingAddress" type="text" placeholder="Skąd chcesz wyruszyć?">
+        </div>
+        <input id="destination" type="text" placeholder="Cel podróży">
+      <button id="searchButton" type="submit"><i class="icon fas fa-search"></i></button>
     </form>
   </header>
 
   <main id="main" class="container wrapper">
-      <section class="journey"></section>
-      <section class="api-container col-md-6">
-        <table class="api-table">
-        </table>
+      <section class="journey-info">
+        <h2>Twoja podróż</h2>
+        <div class="journey">
+        </div>
       </section>
-      <section id="map" class="col-md-6"></section> 
+      <div class="row">
+        <section class="api-container col-sm-6 data-box">
+          <table class="api-table">
+          </table>
+        </section>
+        <section id="map" class="col-sm-6 data-box"></section>
+      </div>
     </main>
   
 </body>

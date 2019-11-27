@@ -16,8 +16,10 @@ export default class SearchCtrl {
         this.model.meta = this.view.el.destination.value;
         this.model.date = this.view.el.date.value;
         this.model.time = this.view.el.time.value;
+        // jeśli this.model.arrival_departure = true, wtedy this.model.date & time to dodzina wyjazdu, jeśli false - chodzi o godzinę przyjazdu
+        this.model.arrival_departure = this.view.el.arrival_departure.checked;
         if ((typeof this.model.start === "string" && this.model.start && this.model.meta)) {
-            this.view.el.mainContainer.style.display = "initial";
+            this.view.el.mainContainer.style.display = "block";
             this.view.init(this.model.start, this.model.meta);
             // await this.map.route();
             // console.log(resp.distance.value)
@@ -32,28 +34,41 @@ export default class SearchCtrl {
         }
     }
 
-    handleClickOnLocation() {
-        if (navigator.geolocation)
-            navigator.geolocation.getCurrentPosition(async (position) => {
+
+    handleClickOnLocation(){
+        this.model.geolocation = this.view.el.geolocation;
+        if (this.model.geolocation.classList.contains('fa-dot-circle')){
+            this.model.geolocation.classList.remove('fa-dot-circle');
+            this.model.geolocation.classList.add('fa-times-circle');
+            if (navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(async (position) => {
                 this.model.coors = [position.coords.latitude, position.coords.longitude];
-                //this.view.el.startingAddress.value = `${position.coords.latitude}, ${position.coords.longitude}`
-                await this.model.displayAdress(this.model.coors);
+                await this.model.displayAddress(this.model.coors);
                 this.model.start = this.model.address;
                 this.view.el.startingAddress.value = this.model.address;
             })
-        else {
-            window.alert('Geolocation is not supported by your browser')
+            else{
+                window.alert('Geolocation is not supported by your browser')
+            }
         }
+        else {
+            this.model.geolocation.classList.add('fa-dot-circle');
+            this.model.geolocation.classList.remove('fa-times-circle');
+            this.view.el.startingAddress.value = "";
+        }
+        
     }
 
     //Tutaj będą wywoływane inne eventy
+
     _setListeners() {
-        document.querySelector("#searchButton").addEventListener("click", ev => {
+        this.view.el.searchBtn.addEventListener("click", ev => {
+
             ev.preventDefault();
             this.handleClickOnSearch();
             this.view.el.mainContainer.scrollIntoView();
         });
-        document.querySelector("#location").addEventListener("click", () => {
+        this.view.el.geolocation.addEventListener("click", () => {
             this.handleClickOnLocation();
         });
     }

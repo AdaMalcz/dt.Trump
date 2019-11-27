@@ -8,11 +8,13 @@ class MainView {
       mainContainer: document.querySelector('.container'),
       apiContainer: document.querySelector('.api-table'),
       journeyTitle: document.querySelector('.journey'),
+      geolocation: document.querySelector('#geolocation'),
       startingAddress: document.querySelector('#startingAddress'),
       destination: document.querySelector('#destination'),
       date: document.querySelector('#dateInput'),
       time: document.querySelector('#timeInput'),
-      //searchBtn: document.querySelector("#searchButton"),
+      arrival_departure: document.querySelector('.onoffswitch-checkbox'),
+      searchBtn: document.querySelector("#searchButton"),
       // itd.
     }
   }
