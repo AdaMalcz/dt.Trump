@@ -46,7 +46,7 @@ export default class SearchCtrl {
                 await this.model.displayAddress(this.model.coors);
                 this.model.start = this.model.address;
                 this.view.el.startingAddress.value = this.model.address;
-            })
+            })}
             else{
                 window.alert('Geolocation is not supported by your browser')
             }
