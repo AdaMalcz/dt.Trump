@@ -14,6 +14,7 @@ class BicyclingModel extends BaseModel {
   getData() {
     return {
       transport: this.transport,
+      icon: `<i class="fas fa-bicycle"></i>` ,
       name: this.name,
       time: this.time,
       dist: this.dist,
