@@ -14,14 +14,14 @@ export default class MainContentView extends MainView{
           <tr>
             <td class="transport no-right-border"><a onclick="calculateAndDisplayRoute('${fetchedObj.name}')">${fetchedObj.transport}</a></td>
             <td class="no-right-border">Czas: ${fetchedObj.time}</td>
-            <td class="no-right-border">Odległość: ${fetchedObj.dist}</td>
-            <td class="no-right-border">Koszt: ${Math.round(fetchedObj.cost * resp.distance.value/1000)}zł</td>
+            <td class="no-right-border">Odległość: ${fetchedObj.dist} km</td>
+            <td class="no-right-border">Koszt: ${fetchedObj.cost} zł</td>
             <td class="link"><a href=${fetchedObj.naviLink} target="_blank">Przejdż do nawigacji</a></td>
           </tr>
             `;
     } else {
       return `
-            <tr>
+          <tr>
             <td class="transport no-right-border"><a onclick="calculateAndDisplayRoute('${fetchedObj.name}')">${fetchedObj.transport}</a></td>
             <td class="no-right-border">Czas: ${fetchedObj.time}</td>
             <td class="no-right-border">Odległość: ${fetchedObj.dist}</td>
