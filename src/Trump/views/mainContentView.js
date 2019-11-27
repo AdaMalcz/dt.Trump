@@ -42,24 +42,19 @@ export default class MainContentView extends MainView{
     }
     )}).catch(console.error);
     return `
-          <tbody>
           <tr>
-            <td rowspan="2" class="transport"><a onclick="calculateAndDisplayRoute('${fetchedObj.name}')">${fetchedObj.transport}</a></td>
-            <td class="caption top">Czas:</td>
-            <td class="value top">${resp.duration.text}</td>
-            <td rowspan="2" class="link"><a href=${fetchedObj.naviLink} target="_blank">Przejdż do nawigacji</a></td>
+            <td class="transport no-right-border"><a onclick="calculateAndDisplayRoute('${fetchedObj.name}')">${fetchedObj.transport}</a></td>
+            <td class="no-right-border">Czas: ${resp.duration.text}</td>
+            <td class="no-right-border">Koszt: ${Math.round(fetchedObj.cost * resp.distance.value/1000)}zł</td>
+            <td class="link"><a href=${fetchedObj.naviLink} target="_blank">Przejdż do nawigacji</a></td>
           </tr>
-          <tr>
-            <td class="caption bottom">Koszt:</td>
-            <td class="value bottom">${Math.round(fetchedObj.cost * resp.distance.value/1000)}zł</td>
-          </tr>
-          </tbody>
-          <br>
           `;
   }
 
   init(start, meta){
-      this.el.journeyTitle.innerHTML = `<h2>Podróż z ${start} do ${meta}</h2>`;
+      this._clearElementContent(this.el.journeyTitle);
+      this._createElement(this.el.journeyTitle, 'h3', `Początek: ${start}`, '', 'place-name');
+      this._createElement(this.el.journeyTitle, 'h3', `Cel: ${meta}`, '', 'place-name');
       //tutaj będzie kod z wyświetlaniem danych z api
 
       window.origin_place = start;

@@ -17,7 +17,7 @@ export default class SearchCtrl {
         // jeśli this.model.arrival_departure = true, wtedy this.model.date & time to dodzina wyjazdu, jeśli false - chodzi o godzinę przyjazdu
         this.model.arrival_departure = this.view.el.arrival_departure.checked;
         if ((typeof this.model.start === "string" && this.model.start && this.model.meta)) {
-            this.view.el.mainContainer.style.display = "initial";
+            this.view.el.mainContainer.style.display = "block";
             this.view.init(this.model.start, this.model.meta);
             this.trumpCtrl.renderSomething()
             document.querySelector("#map").style.height="400px"; // ustawiania wysokości mapy

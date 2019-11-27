@@ -8,51 +8,62 @@
     box-sizing: border-box;
 }
 :root{
-    --mainColor: #fddc04f8;
-    --secondColor: #ff9531ed;
-    --greyShade: #99999999;
+    --mainColor: #fddc04;
+    --secondColor: #ee790c;
+    --greyShade: #868686;
     --dark: #000000;
-    --light: #fffdecf3;
-    --warning: #c70303ec;
+    --light: #FFFFF0;
+    --warning: #c70303;
 }
-
+h1{
+  font-size: 4rem;
+}
+h2{
+  font-size: 3rem;
+  margin: 2rem auto 2rem auto;
+}
+h3{
+  font-size: 2rem;  
+  margin: 2rem auto 2rem auto;  
+}
 .container{
     display: none;
-}/*
-.api-container{
-    display: flex;
-    justify-content: center;
-    align-content: center;
+    margin: 5%;
+    width: 90%;
 }
-.journey h2{
+.journey-info{
     padding-top: 3rem;
+    padding-top: 2rem;
     margin-bottom: 3rem;
     margin: 1rem auto 1rem auto;
     text-align: center;
 }
-tbody{
-    margin-bottom: 2rem;
+.place-name{
+    text-align: left;
+    width: 50%;
+}
+.row{
+    margin: auto;
+}
+.data-box{
+    margin: auto;
+    text-align: center;
+}
+table{
+    border-collapse: collapse;
+}
+.api-table{
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+    width: 100%;
 }
 td{
-    padding: 0.5rem;
+    padding: 1rem;
+    border: 1px solid var(--secondColor);
 }
-.value{
-    width: 10vw;
-    text-align: left;
-}
-.caption{
-    width: 10vw;
-    text-align: right;
-}
-.transport{
-    border: 1px solid var(--mainColor);
-    width: 5vw;
-}
-.link{
-    border: 1px solid var(--mainColor);
-    width: 5vw;
-}
-    
+.no-right-border{
+    border-right: hidden;
+}    
 .link a{
     color: var(--dark);
     text-decoration: none;
@@ -63,15 +74,10 @@ td{
     text-decoration: underline;
     text-decoration-color: var(--dark);
 }
-.top{
-    border-top: 2px dotted var(--mainColor);
-}
-.bottom{
-    border-bottom: 2px dotted var(--mainColor);
-}
 
 #map {
-    max-width: 500px;
+    max-width: 400px;
     height: 0px;
+    border: 1px solid var(--secondColor);
+    border-radius: 10px;
 }
-*/
