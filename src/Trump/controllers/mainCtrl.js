@@ -2,6 +2,7 @@
 import HeaderView from '../views/headerView';
 import MainContentView from '../views/mainContentView';
 import SearchCtrl from './searchCtrl';
+import MapCtrl from './mapCtrl';
 import DrivingModel from '../models/drivingModel';
 import WalkingModel from '../models/walkingModel';
 import BicyclingModel from '../models/bicyclingModel';
@@ -18,6 +19,7 @@ export default class TrumpCtrl {
     this.modelWalking = new WalkingModel();
     this.modelBicycling = new BicyclingModel();
     this.modelTransit = new TransitModel();
+    this.map = new MapCtrl();
 
   }
 
@@ -29,6 +31,10 @@ export default class TrumpCtrl {
     //   // i tutaj wpisujemy co chcemy wyrenderować - nasz markup
     //   await this.view.getMainContentMarkup(this.model.getData()) // przekazujemy pobrane dane (pobieramy fetchem w modelu) 
     // );
+    await this.modelDriving.update();
+    await this.modelWalking.update();
+    await this.modelBicycling.update();
+    await this.modelTransit.update();
     this.view.render(
       this.view.el.apiContainer,
       await this.view.getMainContentMarkup(this.modelDriving.getData())

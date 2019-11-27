@@ -19,7 +19,6 @@ export default class SearchModel {
     let minutes = this.time.substring(3,5);
 
     return new Date(year,month-1,day,hour,minutes)
-
   }
   //translate coordinates to address
   async getAddress(coordinates) {
