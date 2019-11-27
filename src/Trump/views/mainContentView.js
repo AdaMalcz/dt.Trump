@@ -9,27 +9,17 @@ export default class MainContentView extends MainView{
   }
   
   getMainContentMarkup(fetchedObj) {
-    if (fetchedObj.name=="TRANSIT" || fetchedObj.name=="DRIVING") {
       return `
-          <tr>
-            <td class="transport no-right-border"><a onclick="calculateAndDisplayRoute('${fetchedObj.name}')">${fetchedObj.transport}</a></td>
-            <td class="no-right-border">Czas: ${fetchedObj.time}</td>
-            <td class="no-right-border">Odległość: ${fetchedObj.dist} km</td>
-            <td class="no-right-border">Koszt: ${fetchedObj.cost} zł</td>
-            <td class="link"><a href=${fetchedObj.naviLink} target="_blank">Przejdż do nawigacji</a></td>
-          </tr>
-            `;
-    } else {
-      return `
-          <tr>
-            <td class="transport no-right-border"><a onclick="calculateAndDisplayRoute('${fetchedObj.name}')">${fetchedObj.transport}</a></td>
-            <td class="no-right-border">Czas: ${fetchedObj.time}</td>
-            <td class="no-right-border">Odległość: ${fetchedObj.dist}</td>
-            <td class="link"><a href=${fetchedObj.naviLink} target="_blank">Przejdż do nawigacji</a></td>
-          </tr>
-            `;
-    }
-
+        ${this.el.nameMarkup}
+        <a onclick="calculateAndDisplayRoute('${fetchedObj.name}')">${fetchedObj.icon}<br>${fetchedObj.transport}</a>
+        ${this.el.timeMarkup}
+        ${fetchedObj.time}
+        ${this.el.distanceMarkup}
+        ${fetchedObj.dist} km
+        ${this.el.naviMarkup}
+        ${fetchedObj.naviLink}
+        ${this.el.closingMarkup}
+        `;
   }
 
   init(start, meta){

@@ -54,20 +54,51 @@ table{
 }
 .api-table{
     border-collapse: separate;
-    border-spacing: 0 1rem;
+    border-spacing: 0 0.5rem;
     width: 100%;
 }
-td{
+th{
+    background-color: var(--mainColor);
+    color: var(--light);
+    text-shadow: -1px 0 var(--dark), 0 1px var(--dark), 1px 0 var(--dark), 0 -1px var(--dark);
+}
+td, th{
     padding: 1rem;
     border: 1px solid var(--secondColor);
+    text-align: center;
+}
+tr{
+    width: 100%;
 }
 .no-right-border{
     border-right: hidden;
-}    
+}   
+.left-border-radius{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+} 
+.right-border-radius{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+} 
+.transport a{
+    cursor: pointer;
+    color: var(--secondColor);
+    text-decoration: none;
+}
+.transport a:hover{
+    color: var(--mainColor);
+}
+.link i {
+    font-size: 2rem;
+}
 .link a{
-    color: var(--dark);
+    color: var(--secondColor);
     text-decoration: none;
     cursor: pointer;
+}
+.link a:hover{
+    color: var(--mainColor);
 }
 
 .link a:hover{
@@ -76,6 +107,7 @@ td{
 }
 
 #map {
+    margin-top: 0.5rem;
     max-width: 400px;
     height: 0px;
     border: 1px solid var(--secondColor);

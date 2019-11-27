@@ -15,6 +15,7 @@ class TransitModel extends BaseModel {
   getData() {
     return {
       transport: this.transport,
+      icon: `<i class="fas fa-bus"></i>`,
       name: this.name,
       time: this.time,
       dist: this.dist,

@@ -6,7 +6,7 @@ class MainView {
     this.el = {
       header: document.querySelector('#header'),
       mainContainer: document.querySelector('.container'),
-      apiContainer: document.querySelector('.api-table'),
+      apiContainer: document.querySelector('.api-table-body'),
       journeyTitle: document.querySelector('.journey'),
       geolocation: document.querySelector('#geolocation'),
       startingAddress: document.querySelector('#startingAddress'),
@@ -16,6 +16,12 @@ class MainView {
       arrival_departure: document.querySelector('.onoffswitch-checkbox'),
       searchBtn: document.querySelector("#searchButton"),
       // itd.
+      nameMarkup: `<tr> <td class="transport no-right-border left-border-radius">`,
+      timeMarkup: `</td> <td class="no-right-border">`,
+      distanceMarkup: `</td> <td class="no-right-border">`,
+      costMarkup: `</td> <td class="no-right-border">`,
+      naviMarkup: `</td> <td class="link right-border-radius"> <a href="`,
+      closingMarkup: `" target="_blank"> <i class="fas fa-directions"> </i> </a> </td> </tr>`,
     }
   }
 
