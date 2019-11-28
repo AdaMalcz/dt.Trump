@@ -48,6 +48,12 @@ export default class MainContentView extends MainView{
     }
   }
 
+  renderWeatherContent(fetchedObj) {
+    document.querySelector('#icon img').src = fetchedObj.icon;
+    document.querySelector('#temp').textContent = fetchedObj.temp;
+  }
+  
+
   init(start, meta){
       this.el.journeyTitle.innerHTML = `<h2>Podróż z ${start} do ${meta}</h2>`;
       //tutaj będzie kod z wyświetlaniem danych z api

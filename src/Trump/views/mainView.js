@@ -12,6 +12,7 @@ class MainView {
       destination: document.querySelector('#destination'),
       date: document.querySelector('#dateInput'),
       time: document.querySelector('#timeInput'),
+      weatherContainer: document.querySelector('.weather-container'), //moje
       //searchBtn: document.querySelector("#searchButton"),
       // itd.
     }

@@ -19,6 +19,8 @@ export default class SearchCtrl {
         if ((typeof this.model.start === "string" && this.model.start && this.model.meta)) {
             this.view.el.mainContainer.style.display = "initial";
             this.view.init(this.model.start, this.model.meta);
+            // this.model.getCoors(this.model.meta);
+            this.model.getCoors(this.model.meta);
             // await this.map.route();
             // console.log(resp.distance.value)
             this.trumpCtrl.renderSomething()

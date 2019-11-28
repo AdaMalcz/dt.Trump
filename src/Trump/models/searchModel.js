@@ -24,7 +24,7 @@ export default class SearchModel {
     try {
       let geocodeCoordinates = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.coors[0]},${this.coors[1]}&key=${process.env.API_GM_KEY}`
       const rawData = await fetch(geocodeCoordinates);
-      //console.log(await rawData.json());
+      // console.log(await rawData.json());
       return await rawData.json();
     } catch (error) {
       return new Error(`Wild ERROR occured, can't get LocObj. Details: ${error}`);
@@ -37,6 +37,19 @@ export default class SearchModel {
     this.address = await dataAdress;
   }
 
-}
-
 //translate address to coordinates - to do if needed
+
+  async getCoors(address) {
+    try {
+      let geocodeAddress = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.API_GM_KEY}`
+      const rawData = await fetch(geocodeAddress);
+      const data = await rawData.json();
+      const lat = data.results[0].geometry.location.lat;
+      const lng = data.results[0].geometry.location.lng;
+      console.log(data.results[0].geometry.location.lat);
+      return await lat, lng;
+    } catch (error) {
+      return new Error(`Wild ERROR occured, can't get LocObj. Details: ${error}`);
+    }
+  }
+}
