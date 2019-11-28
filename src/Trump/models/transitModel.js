@@ -8,13 +8,15 @@ class TransitModel extends BaseModel {
       this.time = "",
       this.dist = 0,
       this.cost = "",
-      this.naviLink = "https://www.google.com/"
+      this.naviLink = "https://www.google.com/",
+      this.failMsg = "Google Maps nie obsługuje komunikacji miejskiej we wskazanym mieście. Jeśli planujesz podróż międzymiastową spróbuj wpisać nazwę miasta (bez konkretnego asdresu)."
   }
 
   // w modelach będą funkcje asynchroniczne i pomocnicze do nich aby przekzaywać dane w odpowiednim formacie, na potrzeby testów zwracam zwykły obiekt
   getData() {
     return {
       transport: this.transport,
+      icon: `<i class="fas fa-bus"></i>`,
       name: this.name,
       time: this.time,
       dist: this.dist,
@@ -36,7 +38,7 @@ class TransitModel extends BaseModel {
         }
       }
       )
-    }).catch(console.error);
+    });
     if(trans) {
       this.time = trans.duration.text;
       this.dist = Math.round(trans.distance.value / 100)/10;

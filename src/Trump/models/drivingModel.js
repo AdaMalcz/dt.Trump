@@ -15,6 +15,7 @@ class DrivingModel extends BaseModel {
   getData() {
     return {
       transport: this.transport,
+      icon: `<i class="fas fa-car"></i>`,
       name: this.name,
       cost: this.cost,
       time: this.time,

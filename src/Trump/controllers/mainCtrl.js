@@ -36,7 +36,6 @@ export default class TrumpCtrl {
     await this.modelDriving.update();
     await this.modelWalking.update();
     await this.modelBicycling.update();
-    await this.modelTransit.update();
     await this.modelWeather.update();
     this.view.render(
       this.view.el.apiContainer,
@@ -50,10 +49,21 @@ export default class TrumpCtrl {
       this.view.el.apiContainer,
       await this.view.getMainContentMarkup(this.modelBicycling.getData())
     );
-    this.view.render(
-      this.view.el.apiContainer,
-      await this.view.getMainContentMarkup(this.modelTransit.getData())
-    );
+    
+    try {
+      //document.querySelector('#fail').innerHTML = '';
+      await this.modelTransit.update();
+      this.view.render(
+        this.view.el.apiContainer,
+        await this.view.getMainContentMarkup(this.modelTransit.getData())
+      );
+    } catch { 
+      document.querySelector('#msg').innerHTML = this.modelTransit.failMsg;
+    }
+     // this.view.render(
+       // this.view.el.journeyTitle.querySelector(p),
+       // this.modelTransit.failMsg
+     // )};
     await this.view.renderWeatherContent(this.modelWeather.getData())
   };
 
@@ -61,7 +71,7 @@ init() {
   console.log('Trump init...');
   
   this._headerView.init();
-  // this.renderWeather();
+  // this.renderSomething();
 
   this.search.init();
   }

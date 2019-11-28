@@ -9,43 +9,17 @@ export default class MainContentView extends MainView{
   }
   
   getMainContentMarkup(fetchedObj) {
-    if (fetchedObj.name=="TRANSIT" || fetchedObj.name=="DRIVING") {
       return `
-            <tbody>
-            <tr>
-              <td rowspan="3" class="transport"><a onclick="calculateAndDisplayRoute('${fetchedObj.name}')">${fetchedObj.transport}</a></td>
-              <td class="caption top">Czas:</td>
-              <td class="value top">${fetchedObj.time}</td>
-              <td rowspan="3" class="link"><a href=${fetchedObj.naviLink} target="_blank">Przejdż do nawigacji</a></td>
-            </tr>
-            <tr>
-              <td class="caption">Odległość:</td>
-              <td class="value">${fetchedObj.dist} km</td>
-            </tr>
-            <tr>
-              <td class="caption bottom">Koszt:</td>
-              <td class="value bottom">${fetchedObj.cost} zł</td>
-            </tr>
-            </tbody>
-            <br>
-            `;
-    } else {
-      return `
-            <tbody>
-            <tr>
-              <td rowspan="2" class="transport"><a onclick="calculateAndDisplayRoute('${fetchedObj.name}')">${fetchedObj.transport}</a></td>
-              <td class="caption top">Czas:</td>
-              <td class="value top">${fetchedObj.time}</td>
-              <td rowspan="2" class="link"><a href=${fetchedObj.naviLink} target="_blank">Przejdż do nawigacji</a></td>
-            </tr>
-            <tr>
-              <td class="caption bottom">Odległość:</td>
-              <td class="value bottom">${fetchedObj.dist} km</td>
-            </tr>
-            </tbody>
-            <br>
-            `;
-    }
+        ${this.el.nameMarkup}
+        <a onclick="calculateAndDisplayRoute('${fetchedObj.name}')">${fetchedObj.icon}<br>${fetchedObj.transport}</a>
+        ${this.el.timeMarkup}
+        ${fetchedObj.time}
+        ${this.el.distanceMarkup}
+        ${fetchedObj.dist} km
+        ${this.el.naviMarkup}
+        ${fetchedObj.naviLink}
+        ${this.el.closingMarkup}
+        `;
   }
 
   renderWeatherContent(fetchedObj) {
@@ -55,8 +29,12 @@ export default class MainContentView extends MainView{
   
 
   init(start, meta){
-      this.el.journeyTitle.innerHTML = `<h2>Podróż z ${start} do ${meta}</h2>`;
+      this._clearElementContent(this.el.journeyTitle);
+      this._createElement(this.el.journeyTitle, 'h3', `Początek: ${start}`, '', 'place-name');
+      this._createElement(this.el.journeyTitle, 'h3', `Cel: ${meta}`, '', 'place-name');
+      this._createElement(this.el.journeyTitle, 'p', `Wszystkie środki komunikacji dostępne`, 'msg', '');
       //tutaj będzie kod z wyświetlaniem danych z api
+     
 
       window.origin_place = start;
       window.destination_place = meta;
