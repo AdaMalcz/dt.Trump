@@ -26,7 +26,9 @@ export default class MainContentView extends MainView{
       this._clearElementContent(this.el.journeyTitle);
       this._createElement(this.el.journeyTitle, 'h3', `Początek: ${start}`, '', 'place-name');
       this._createElement(this.el.journeyTitle, 'h3', `Cel: ${meta}`, '', 'place-name');
+      this._createElement(this.el.journeyTitle, 'p', `Wszystkie środki komunikacji dostępne`, 'msg', '');
       //tutaj będzie kod z wyświetlaniem danych z api
+     
 
       window.origin_place = start;
       window.destination_place = meta;
