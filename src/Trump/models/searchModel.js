@@ -47,8 +47,8 @@ export default class SearchModel {
       const data = await rawData.json();
       const lat = data.results[0].geometry.location.lat;
       const lng = data.results[0].geometry.location.lng;
-      console.log(data.results[0].geometry.location.lat);
-      return await lat, lng;
+      console.log(data);
+      return await {"lat": lat, "long" : lng};
     } catch (error) {
       return new Error(`Wild ERROR occured, can't get LocObj. Details: ${error}`);
     }

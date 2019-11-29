@@ -13,7 +13,6 @@ class MainView {
       destination: document.querySelector('#destination'),
       date: document.querySelector('#dateInput'),
       time: document.querySelector('#timeInput'),
-      weatherContainer: document.querySelector('.weather-container'),
       arrival_departure: document.querySelector('.onoffswitch-checkbox'),
       searchBtn: document.querySelector("#searchButton"),
       // itd.
