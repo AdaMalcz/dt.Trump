@@ -19,7 +19,7 @@ export default class SearchCtrl {
         // jeśli this.model.arrival_departure = true, wtedy this.model.date & time to dodzina wyjazdu, jeśli false - chodzi o godzinę przyjazdu
         this.model.arrival_departure = this.view.el.arrival_departure.checked;
         if ((typeof this.model.start === "string" && this.model.start && this.model.meta)) {
-            this.view.el.mainContainer.style.display = "block";
+            this.view.el.mainContainer.classList.remove('hide')
             this.view.init(this.model.start, this.model.meta);
             // await this.map.route();
             // console.log(resp.distance.value)
@@ -59,17 +59,37 @@ export default class SearchCtrl {
         
     }
 
+    displayAutocompleteDropdown(input){
+        input.type= "select";
+        let arrayOfOptions = new Array(this.model.autocomplete.length);
+        for (let i = 0; i < this.model.autocomplete.length; i++){
+            arrayOfOptions[i]=`<option value='${this.model.autocomplete[i].description}'></option>`
+
+        }
+        console.log(arrayOfOptions)
+        document.querySelector(`#${input.id}Datalist`).innerHTML = arrayOfOptions.join(' ')
+        console.log(this.model.autocomplete)
+    }
     //Tutaj będą wywoływane inne eventy
 
     _setListeners() {
         this.view.el.searchBtn.addEventListener("click", ev => {
-
             ev.preventDefault();
             this.handleClickOnSearch();
             this.view.el.mainContainer.scrollIntoView();
         });
         this.view.el.geolocation.addEventListener("click", () => {
             this.handleClickOnLocation();
+        });
+        this.view.el.startingAddress.addEventListener("input", async () => {
+            //this.view.autocomplete.remove()
+            await this.model.displayAutocomplete(this.view.el.startingAddress)
+            await this.displayAutocompleteDropdown(this.view.el.startingAddress)
+        });
+        this.view.el.destination.addEventListener("input", async () => {
+            //this.view.autocomplete.remove()
+            await this.model.displayAutocomplete(this.view.el.destination)
+            await this.displayAutocompleteDropdown(this.view.el.destination)
         });
     }
 

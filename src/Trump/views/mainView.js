@@ -18,6 +18,7 @@ class MainView {
       transportType: document.querySelector(".transport-type"),
       activeTransport: document.querySelector(".active-transport"),
       calendar: document.querySelector("#calendar"),
+      autocompleteList: document.querySelector("#autocomplete"),
       
       setIdMarkup: `<tr class="transport-type" id="`,
       nameMarkup: `"> <td class="transport no-right-border left-border-radius">`,

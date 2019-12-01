@@ -51,9 +51,11 @@
       </div>
       <div class="geolocation-input">
           <i id="geolocation" class="far fa-dot-circle icon"></i>
-          <input id="startingAddress" type="text" placeholder="Skąd chcesz wyruszyć?">
+          <input id="startingAddress" type="text" list="startingAddressDatalist" placeholder="Skąd chcesz wyruszyć?">
+          <select id="startingAddressDatalist"></select>
         </div>
-        <input id="destination" type="text" placeholder="Cel podróży">
+        <input id="destination" type="text" list="destinationDatalist" placeholder="Cel podróży">
+        <select id="destinationDatalist"></select>
       <button id="searchButton" type="submit"><i class="icon fas fa-search"></i></button>
     </form>
   </header>
