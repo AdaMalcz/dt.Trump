@@ -29,14 +29,12 @@ form{
   align-self: center;
   justify-content: center;
   align-content: center;
+  position: relative;
 }
-.geolocation-input, input#destination, #searchButton{
+.geolocation-input, .dest-input, #searchButton{
   margin: 0.5rem;
   position: relative;
   flex: 1 1 100%;
-}
-.geolocation-input input{ 
-  width: 100%;
 }
 .icon {
   font-size: 2rem;
@@ -56,6 +54,7 @@ form{
 input#startingAddress, input#destination{
   text-align: left;
   min-width: 200px;
+  width: 100%;
 }
 input, #searchButton{
   padding: 1rem;
@@ -209,4 +208,31 @@ input.time-input {
     max-width: 100%;
     min-width: 200px;
   }
+}
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+.autocomplete-items {
+  position: absolute;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: var(--light);
+  border: 1px solid var(--secondColor);
+  border-radius: 5px;
+}
+.autocomplete-items div:hover {
+  background-color: var(--mainColor);
+}
+.autocomplete-active {
+  background-color: var(--secondColor);
+  color: var(--light);
 }

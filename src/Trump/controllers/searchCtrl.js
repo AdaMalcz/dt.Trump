@@ -1,6 +1,8 @@
 import MainContentView from '../views/mainContentView';
 import SearchModel from '../models/searchModel';
 import MapCtrl from './mapCtrl'
+import AutocompleteCtrl from './autocompleteCtrl';
+import AutocompleteModel from '../models/autocompleteModel';
 
 
 export default class SearchCtrl {
@@ -9,6 +11,8 @@ export default class SearchCtrl {
         this.model = new SearchModel();
         this.map = new MapCtrl();
         this.trumpCtrl = par;
+        this.autocompleteCtrl = new AutocompleteCtrl();
+        this.autoModel = new AutocompleteModel();
     }
 
     async handleClickOnSearch() {
@@ -56,19 +60,16 @@ export default class SearchCtrl {
             this.model.geolocation.classList.remove('fa-times-circle');
             this.view.el.startingAddress.value = "";
         }
-        
+
     }
 
     displayAutocompleteDropdown(input){
         input.type= "select";
-        let arrayOfOptions = new Array(this.model.autocomplete.length);
-        for (let i = 0; i < this.model.autocomplete.length; i++){
-            arrayOfOptions[i]=`<option value='${this.model.autocomplete[i].description}'></option>`
-
+        let arrayOfOptions = new Array(this.autoModel.autocomplete.length);
+        for (let i = 0; i < this.autoModel.autocomplete.length; i++){
+            arrayOfOptions[i]=this.autoModel.autocomplete[i].description;
         }
-        console.log(arrayOfOptions)
-        document.querySelector(`#${input.id}Datalist`).innerHTML = arrayOfOptions.join(' ')
-        console.log(this.model.autocomplete)
+        this.autocompleteCtrl.autocomplete(input, arrayOfOptions)
     }
     //Tutaj będą wywoływane inne eventy
 
@@ -83,12 +84,12 @@ export default class SearchCtrl {
         });
         this.view.el.startingAddress.addEventListener("input", async () => {
             //this.view.autocomplete.remove()
-            await this.model.displayAutocomplete(this.view.el.startingAddress)
+            await this.autoModel.displayAutocomplete(this.view.el.startingAddress)
             await this.displayAutocompleteDropdown(this.view.el.startingAddress)
         });
         this.view.el.destination.addEventListener("input", async () => {
             //this.view.autocomplete.remove()
-            await this.model.displayAutocomplete(this.view.el.destination)
+            await this.autoModel.displayAutocomplete(this.view.el.destination)
             await this.displayAutocompleteDropdown(this.view.el.destination)
         });
     }
