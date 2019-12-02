@@ -14,10 +14,10 @@ export default class SearchCtrl {
     async handleClickOnSearch() {
         this.model.start = this.view.el.startingAddress.value;
         this.model.meta = this.view.el.destination.value;
-        this.model.date = this.view.el.date.value;
-        this.model.time = this.view.el.time.value;
+        window.date = this.view.el.date.value;
+        window.time = this.view.el.time.value;
         // jeśli this.model.arrival_departure = true, wtedy this.model.date & time to dodzina wyjazdu, jeśli false - chodzi o godzinę przyjazdu
-        this.model.arrival_departure = this.view.el.arrival_departure.checked;
+        window.arrivalDeparture = this.view.el.arrival_departure.checked;
         if ((typeof this.model.start === "string" && this.model.start && this.model.meta)) {
             this.view.el.mainContainer.style.display = "block";
             this.view.init(this.model.start, this.model.meta);

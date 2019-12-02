@@ -1,13 +1,17 @@
 import BaseModel from './baseModel';
+import SearchModel from './searchModel';
 
 class BicyclingModel extends BaseModel {
   constructor(optionsObj) {
     super(optionsObj);
+    this.searchModel = new SearchModel();
     this.transport = "Rower",
-      this.name = "BICYCLING",
-      this.time = "",
-      this.dist = 0,
-      this.naviLink = "https://www.google.com/"
+    this.name = "BICYCLING",
+    this.time = "",
+    this.dist = 0,
+    this.naviLink = "https://www.google.com/"
+    this.timeStart = "",
+    this.timeMeta = ""
   }
 
   // w modelach będą funkcje asynchroniczne i pomocnicze do nich aby przekzaywać dane w odpowiednim formacie, na potrzeby testów zwracam zwykły obiekt
@@ -18,7 +22,9 @@ class BicyclingModel extends BaseModel {
       name: this.name,
       time: this.time,
       dist: this.dist,
-      naviLink: this.naviLink
+      naviLink: this.naviLink,
+      timeStart: this.timeStart,
+      timeMeta: this.timeMeta
     }
   }
   async update() {
@@ -39,6 +45,18 @@ class BicyclingModel extends BaseModel {
     this.time = trans.duration.text;
     this.dist = Math.round(trans.distance.value / 100)/10;
     this.naviLink="https://www.google.com/maps/dir/?api=1&origin="+window.origin_place.split(' ').join('+')+"&destination="+window.destination_place.split(' ').join('+')+"&travelmode=bicycling";
+    if(window.arrivalDeparture) {  // data wyjazdu
+      console.log(this.searchModel.takeDateFromInput().toLocaleString())
+      console.log(new Date(this.searchModel.takeDateFromInput().getTime()+trans.duration.value*1000).toLocaleString())
+      this.timeStart = this.searchModel.takeDateFromInput().toLocaleString()
+      this.timeMeta = new Date(this.searchModel.takeDateFromInput().getTime()+trans.duration.value*1000).toLocaleString()
+    }
+    else { // data przyjazdu
+      console.log(new Date(this.searchModel.takeDateFromInput().getTime()-trans.duration.value*1000).toLocaleString())
+      console.log(this.searchModel.takeDateFromInput().toLocaleString())
+      this.timeStart = new Date(this.searchModel.takeDateFromInput().getTime()-trans.duration.value*1000).toLocaleString()
+      this.timeMeta = this.searchModel.takeDateFromInput().toLocaleString()
+    }
   }
 }
 
