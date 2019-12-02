@@ -6,11 +6,11 @@ class DrivingModel extends BaseModel {
     super(optionsObj);
     this.searchModel = new SearchModel();
     this.transport = "Samochód",
-      this.name = "DRIVING",
-      this.time = "",
-      this.dist = 0,
-      this.cost = ""
-    this.naviLink = "https://www.google.com/"
+    this.name = "DRIVING",
+    this.time = "",
+    this.dist = 0,
+    this.cost = "",
+    this.naviLink = "https://www.google.com/",
     this.timeStart = "",
     this.timeMeta = ""
   }
@@ -19,7 +19,6 @@ class DrivingModel extends BaseModel {
   getData() {
     return {
       transport: this.transport,
-      icon: `<i class="fas fa-car"></i>`,
       name: this.name,
       cost: this.cost,
       time: this.time,
@@ -27,7 +26,9 @@ class DrivingModel extends BaseModel {
       cost: this.cost,
       naviLink: this.naviLink,
       timeStart: this.timeStart,
-      timeMeta: this.timeMeta
+      timeMeta: this.timeMeta,
+      duration: this.duration,
+      icon: `<i class="fas fa-car"></i>`
     }
   }
   async update() {
@@ -64,6 +65,7 @@ class DrivingModel extends BaseModel {
       this.timeStart = new Date(this.searchModel.takeDateFromInput().getTime()-trans.duration.value*1000).toLocaleString()
       this.timeMeta = this.searchModel.takeDateFromInput().toLocaleString()
     }
+    this.duration = trans.duration.value;
   }
 }
 

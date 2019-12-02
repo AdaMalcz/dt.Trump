@@ -1,6 +1,8 @@
 import MainContentView from '../views/mainContentView';
 import SearchModel from '../models/searchModel';
 import MapCtrl from './mapCtrl'
+import AutocompleteCtrl from './autocompleteCtrl';
+import AutocompleteModel from '../models/autocompleteModel';
 
 
 export default class SearchCtrl {
@@ -9,6 +11,8 @@ export default class SearchCtrl {
         this.model = new SearchModel();
         this.map = new MapCtrl();
         this.trumpCtrl = par;
+        this.autocompleteCtrl = new AutocompleteCtrl();
+        this.autoModel = new AutocompleteModel();
     }
 
     async handleClickOnSearch() {
@@ -19,7 +23,7 @@ export default class SearchCtrl {
         // jeśli this.model.arrival_departure = true, wtedy this.model.date & time to dodzina wyjazdu, jeśli false - chodzi o godzinę przyjazdu
         window.arrivalDeparture = this.view.el.arrival_departure.checked;
         if ((typeof this.model.start === "string" && this.model.start && this.model.meta)) {
-            this.view.el.mainContainer.style.display = "block";
+            this.view.el.mainContainer.classList.remove('hide')
             this.view.init(this.model.start, this.model.meta);
             // await this.map.route();
             // console.log(resp.distance.value)
@@ -56,20 +60,37 @@ export default class SearchCtrl {
             this.model.geolocation.classList.remove('fa-times-circle');
             this.view.el.startingAddress.value = "";
         }
-        
+
     }
 
+    displayAutocompleteDropdown(input){
+        input.type= "select";
+        let arrayOfOptions = new Array(this.autoModel.autocomplete.length);
+        for (let i = 0; i < this.autoModel.autocomplete.length; i++){
+            arrayOfOptions[i]=this.autoModel.autocomplete[i].description;
+        }
+        this.autocompleteCtrl.autocomplete(input, arrayOfOptions)
+    }
     //Tutaj będą wywoływane inne eventy
 
     _setListeners() {
         this.view.el.searchBtn.addEventListener("click", ev => {
-
             ev.preventDefault();
             this.handleClickOnSearch();
             this.view.el.mainContainer.scrollIntoView();
         });
         this.view.el.geolocation.addEventListener("click", () => {
             this.handleClickOnLocation();
+        });
+        this.view.el.startingAddress.addEventListener("input", async () => {
+            //this.view.autocomplete.remove()
+            await this.autoModel.displayAutocomplete(this.view.el.startingAddress)
+            await this.displayAutocompleteDropdown(this.view.el.startingAddress)
+        });
+        this.view.el.destination.addEventListener("input", async () => {
+            //this.view.autocomplete.remove()
+            await this.autoModel.displayAutocomplete(this.view.el.destination)
+            await this.displayAutocompleteDropdown(this.view.el.destination)
         });
     }
 

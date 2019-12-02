@@ -18,15 +18,19 @@ class WalkingModel extends BaseModel {
   getData() {
     return {
       transport: this.transport,
-      icon: `<i class="fas fa-walking"></i>`,
       name: this.name,
       time: this.time,
       dist: this.dist,
       naviLink: this.naviLink,
+
       timeStart: this.timeStart,
-      timeMeta: this.timeMeta
+      timeMeta: this.timeMeta,
+
+      duration: this.duration,
+      icon: `<i class="fas fa-walking"></i>`
     }
   }
+  
   async update() {
     var trans = await new Promise((resolve, reject) => {
       window.directionsService.route({
@@ -45,6 +49,7 @@ class WalkingModel extends BaseModel {
     this.time = trans.duration.text;
     this.dist = Math.round(trans.distance.value / 100)/10;
     this.naviLink="https://www.google.com/maps/dir/?api=1&origin="+window.origin_place.split(' ').join('+')+"&destination="+window.destination_place.split(' ').join('+')+"&travelmode=walking";
+
     if(window.arrivalDeparture) {  // data wyjazdu
       console.log(this.searchModel.takeDateFromInput().toLocaleString())
       console.log(new Date(this.searchModel.takeDateFromInput().getTime()+trans.duration.value*1000).toLocaleString())
@@ -57,6 +62,8 @@ class WalkingModel extends BaseModel {
       this.timeStart = new Date(this.searchModel.takeDateFromInput().getTime()-trans.duration.value*1000).toLocaleString()
       this.timeMeta = this.searchModel.takeDateFromInput().toLocaleString()
     }
+
+    this.duration = trans.duration.value;
   }
 }
 

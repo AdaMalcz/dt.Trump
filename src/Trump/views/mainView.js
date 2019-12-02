@@ -15,13 +15,19 @@ class MainView {
       time: document.querySelector('#timeInput'),
       arrival_departure: document.querySelector('.onoffswitch-checkbox'),
       searchBtn: document.querySelector("#searchButton"),
-      // itd.
-      nameMarkup: `<tr> <td class="transport no-right-border left-border-radius">`,
+      transportType: document.querySelector(".transport-type"),
+      activeTransport: document.querySelector(".active-transport"),
+      calendar: document.querySelector("#calendar"),
+      autocompleteList: document.querySelector("#autocomplete"),
+      
+      setIdMarkup: `<tr class="transport-type" id="`,
+      nameMarkup: `"> <td class="transport no-right-border left-border-radius">`,
       timeMarkup: `</td> <td class="no-right-border">`,
       distanceMarkup: `</td> <td class="no-right-border">`,
       costMarkup: `</td> <td class="no-right-border">`,
       naviMarkup: `</td> <td class="link right-border-radius"> <a href="`,
-      closingMarkup: `" target="_blank"> <i class="fas fa-directions"> </i> </a> </td> </tr>`,
+      calendarMarkup: `" target="_blank"> <i class="fas fa-compass"> </i> </a>`,
+      closingMarkup: `<i  class="fas fa-calendar-plus"> </i> </a> </td> </tr>`,
     }
   }
 
@@ -57,6 +63,7 @@ class MainView {
   _setAttributes(elementId, attribute, value) {
     document.getElementById(`${elementId}`).setAttribute(attribute, value);
   }
+
 }
 
 export default MainView;
