@@ -20,17 +20,11 @@ export default class TrumpCtrl {
     this.modelBicycling = new BicyclingModel();
     this.modelTransit = new TransitModel();
     this.map = new MapCtrl();
-
   }
 
   async renderSomething() {
     this.view._clearElementContent(this.view.el.apiContainer);
-    // this.view.render(
-    //   // podajemy w jakim elemencie chcemy coś wyrenderować
-    //   this.view.el.apiContainer,
-    //   // i tutaj wpisujemy co chcemy wyrenderować - nasz markup
-    //   await this.view.getMainContentMarkup(this.model.getData()) // przekazujemy pobrane dane (pobieramy fetchem w modelu) 
-    // );
+    
     await this.modelDriving.update();
     await this.modelWalking.update();
     await this.modelBicycling.update();
@@ -47,6 +41,7 @@ export default class TrumpCtrl {
       this.view.el.apiContainer,
       await this.view.getMainContentMarkup(this.modelBicycling.getData())
     );
+
     
     try {
       //document.querySelector('#fail').innerHTML = '';

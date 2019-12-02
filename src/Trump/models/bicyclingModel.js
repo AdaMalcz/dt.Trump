@@ -14,11 +14,12 @@ class BicyclingModel extends BaseModel {
   getData() {
     return {
       transport: this.transport,
-      icon: `<i class="fas fa-bicycle"></i>` ,
       name: this.name,
       time: this.time,
       dist: this.dist,
-      naviLink: this.naviLink
+      naviLink: this.naviLink,
+      duration: this.duration,
+      icon: `<i class="fas fa-bicycle"></i>`
     }
   }
   async update() {
@@ -39,6 +40,7 @@ class BicyclingModel extends BaseModel {
     this.time = trans.duration.text;
     this.dist = Math.round(trans.distance.value / 100)/10;
     this.naviLink="https://www.google.com/maps/dir/?api=1&origin="+window.origin_place.split(' ').join('+')+"&destination="+window.destination_place.split(' ').join('+')+"&travelmode=bicycling";
+    this.duration = trans.duration.value;
   }
 }
 

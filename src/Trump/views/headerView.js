@@ -5,7 +5,6 @@ export default class HeaderView extends MainView {
     super();
   }
 
-  
   _createHeader(){
     let currentMonth, currentDay;
     (new Date().getMonth() < 9) ? currentMonth = `0${new Date().getMonth() + 1}` : currentMonth = new Date().getMonth() + 1;

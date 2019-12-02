@@ -16,12 +16,13 @@ class TransitModel extends BaseModel {
   getData() {
     return {
       transport: this.transport,
-      icon: `<i class="fas fa-bus"></i>`,
       name: this.name,
       time: this.time,
       dist: this.dist,
       cost: this.cost,
-      naviLink: this.naviLink
+      naviLink: this.naviLink,
+      duration: this.duration,
+      icon: `<i class="fas fa-bus"></i>`
     }
   }
   async update() {
@@ -44,6 +45,7 @@ class TransitModel extends BaseModel {
       this.dist = Math.round(trans.distance.value / 100)/10;
       this.cost = "?";
       this.naviLink="https://www.google.com/maps/dir/?api=1&origin="+window.origin_place.split(' ').join('+')+"&destination="+window.destination_place.split(' ').join('+')+"&travelmode=transit";
+      this.duration = trans.duration.value;
     }
   }
 }
