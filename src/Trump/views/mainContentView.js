@@ -23,7 +23,7 @@ export default class MainContentView extends MainView{
   }
 
   renderWeatherContent(fetchedObj) {
-    document.querySelector('.icon img').src = fetchedObj.icon;
+    // document.querySelector('.icon img').src = fetchedObj.icon;
     document.querySelector('.temp').textContent = fetchedObj.temp +'°C';
     document.querySelector('.pressure').textContent = fetchedObj.pressure +' hPa';
   }

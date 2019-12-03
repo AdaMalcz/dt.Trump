@@ -128,13 +128,30 @@ tr{
 }
 
 .weather-table td{
-    background-color:rgb(253, 220, 4,0.5);
+    background-color:rgb(253, 220, 4, 0.5);
     /* border-color: white; */
 }
 
 .temp, .pressure, .wet-title{
     font-size: 1.8rem;
     font-weight: 300;
+}
+
+.loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #a9a9a9; /* Blue */
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    padding: 30px;
+    animation: spin 2s linear infinite;
+    margin-left: auto;
+    margin-right: auto;
+}
+  
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
 }
 
 .red::-webkit-input-placeholder{
