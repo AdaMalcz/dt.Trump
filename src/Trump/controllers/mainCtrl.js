@@ -9,7 +9,6 @@ import BicyclingModel from '../models/bicyclingModel';
 import TransitModel from '../models/transitModel';
 import WeatherModel from '../models/weatherModel';
 
-
 export default class TrumpCtrl {
   constructor() {
     // przypisujemy controllery do state w tym miejscu
@@ -30,7 +29,7 @@ export default class TrumpCtrl {
     await this.modelDriving.update();
     await this.modelWalking.update();
     await this.modelBicycling.update();
-    await this.modelWeather.update();
+    await this.modelWeather.initialWeather();
     this.view.render(
       this.view.el.apiContainer,
       await this.view.getMainContentMarkup(this.modelDriving.getData())
@@ -55,11 +54,6 @@ export default class TrumpCtrl {
     } catch { 
       document.querySelector('#msg').innerHTML = this.modelTransit.failMsg;
     }
-     // this.view.render(
-       // this.view.el.journeyTitle.querySelector(p),
-       // this.modelTransit.failMsg
-     // )};
-    await this.view.renderWeatherContent(this.modelWeather.getData())
   };
 
 init() {

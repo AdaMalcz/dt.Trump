@@ -2,18 +2,22 @@ import MainView from "./mainView";
 import MapCtrl from "../controllers/mapCtrl";
 import CalendarCtrl from '../controllers/CalendarCtrl';
 import { runInContext } from "vm";
+import SearchModel from "../models/searchModel";
+import WeatherModel from "../models/weatherModel";
   
 export default class MainContentView extends MainView{
   constructor() {
     super();
     this.mapCtrl = new MapCtrl();
     window.calendar = new CalendarCtrl();
+    this.searchModel = new SearchModel();
+    this.weatherModel = new WeatherModel();
   }
   
   getMainContentMarkup(fetchedObj) {
       return `
         ${this.el.setIdMarkup}${fetchedObj.name}${this.el.nameMarkup}
-        <a onclick="calculateAndDisplayRoute('${fetchedObj.name}')">
+        <a onclick="calculateAndDisplayRoute('${fetchedObj.name}');update('${fetchedObj.timeMeta2}');">
         ${fetchedObj.icon}<br>${fetchedObj.transport}</a>
         ${this.el.timeMarkup}
         ${fetchedObj.time}
@@ -27,15 +31,8 @@ export default class MainContentView extends MainView{
         ${this.el.closingMarkup}
         `;
   }
-
-  renderWeatherContent(fetchedObj) {
-    // document.querySelector('.icon img').src = fetchedObj.icon;
-    document.querySelector('.temp').textContent = fetchedObj.temp +'°C';
-    document.querySelector('.pressure').textContent = fetchedObj.pressure +' hPa';
-  }
   
-
-  init(start, meta){
+  async init(start, meta){
       this._clearElementContent(this.el.journeyTitle);
       this._createElement(this.el.journeyTitle, 'h3', `Z: ${start}`, '', 'place-name');
       this._createElement(this.el.journeyTitle, 'h3', `Do: ${meta}`, '', 'place-name');
@@ -45,7 +42,8 @@ export default class MainContentView extends MainView{
 
       window.origin_place = start;
       window.destination_place = meta;
-
+      const coords = await this.searchModel.getCoors(window.destination_place);
+      window.coords = coords;
       var google_api = document.querySelector("#google_api")
       if (google_api) {
         this.mapCtrl.showPoints();
