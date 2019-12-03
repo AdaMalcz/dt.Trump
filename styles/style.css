@@ -14,6 +14,7 @@
     --dark: #000000;
     --light: #FFFFF0;
     --warning: #c70303;
+    --active: #ee790c7d;
 }
 h1{
   font-size: 4rem;
@@ -26,8 +27,10 @@ h3{
   font-size: 2rem;  
   margin: 2rem auto 2rem auto;  
 }
-.container{
+.hide{
     display: none;
+}
+.container{
     margin: 5%;
     width: 90%;
 }
@@ -70,6 +73,9 @@ td, th{
 tr{
     width: 100%;
 }
+.active-transport{
+    background-color: var(--active);
+}
 .no-right-border{
     border-right: hidden;
 }
@@ -91,25 +97,30 @@ tr{
     cursor: pointer;
     color: var(--secondColor);
     text-decoration: none;
+    transition: all 0.3s ease-in-out;
 }
 .transport a:hover{
     color: var(--mainColor);
+    text-shadow: -1px 0 var(--dark), 0 1px var(--dark), 1px 0 var(--dark), 0 -1px var(--dark);
 }
 .link i {
+    padding: 0.5rem;
     font-size: 2rem;
 }
 .link a{
     color: var(--secondColor);
     text-decoration: none;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 .link a:hover{
     color: var(--mainColor);
+    text-shadow: -1px 0 var(--dark), 0 1px var(--dark), 1px 0 var(--dark), 0 -1px var(--dark);
 }
 
 .link a:hover{
     text-decoration: underline;
-    text-decoration-color: var(--dark);
+    text-shadow: -1px 0 var(--dark), 0 1px var(--dark), 1px 0 var(--dark), 0 -1px var(--dark);
 }
 
 #map{
@@ -168,4 +179,7 @@ tr{
 }
 .red:-ms-input-placeholder{
     color: var(--warning); /* Internet Explorer 10-11 */
+}
+.calendar {
+    position: fixed;
 }

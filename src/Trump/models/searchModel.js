@@ -12,11 +12,11 @@ export default class SearchModel {
     this.geolocation = '';
   }
   takeDateFromInput(){
-    let year = this.date.substring(0,4);
-    let month = this.date.substring(5,7);
-    let day = this.date.substring(8,10);
-    let hour = this.time.substring(0,2);
-    let minutes = this.time.substring(3,5);
+    let year = window.date.substring(0,4);
+    let month = window.date.substring(5,7);
+    let day = window.date.substring(8,10);
+    let hour = window.time.substring(0,2);
+    let minutes = window.time.substring(3,5);
 
     return new Date(year,month-1,day,hour,minutes)
   }

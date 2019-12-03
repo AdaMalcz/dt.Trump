@@ -50,15 +50,17 @@
         <input id="timeInput" type="time" class="time-input">
       </div>
       <div class="geolocation-input">
-          <i id="geolocation" class="far fa-dot-circle icon"></i>
-          <input id="startingAddress" type="text" placeholder="Skąd chcesz wyruszyć?">
-        </div>
-        <input id="destination" type="text" placeholder="Cel podróży">
+        <i id="geolocation" class="far fa-dot-circle icon"></i>
+        <input id="startingAddress" type="text" autocomplete='off' placeholder="Skąd chcesz wyruszyć?">
+      </div>
+      <div class="dest-input">
+        <input id="destination" type="text" autocomplete='off' placeholder="Cel podróży">
+      </div>
       <button id="searchButton" type="submit"><i class="icon fas fa-search"></i></button>
     </form>
   </header>
 
-  <main id="main" class="container wrapper">
+  <main id="main" class="hide container wrapper">
       <section class="journey-info">
         <h2>Twoja podróż</h2>
         <div class="journey">
@@ -95,7 +97,6 @@
           </table>
       </section>
     </main>
-  
 </body>
 
 </html>

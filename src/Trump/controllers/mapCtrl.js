@@ -63,6 +63,9 @@ export default class MapCtrl {
   }
 
   calculateAndDisplayRoute(selectedMode) {
+    if (document.querySelector('.active-transport'))
+      document.querySelector('.active-transport').classList.remove('active-transport');
+    
     window.directionsRenderer.setMap(window.gmap);
     if (window.marker1) {
       window.marker1.setMap(null)
@@ -79,5 +82,6 @@ export default class MapCtrl {
         window.alert('Directions request failed due to ' + status);
       }
     });
+    document.querySelector(`#${selectedMode}`).classList.add('active-transport');
   }
 }
