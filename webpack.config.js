@@ -24,5 +24,8 @@ module.exports = {
     new Dotenv({
       path: './src/config/config.env'
     })
-  ]
+  ],
+  node: {
+    fs: "empty"
+  }
 };

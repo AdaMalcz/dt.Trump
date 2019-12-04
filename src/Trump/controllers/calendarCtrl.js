@@ -7,9 +7,9 @@ export default class CalendarCtrl{
         this.view = new CalendarView();
     }
 
-    downloadContent(){
-        console.log(calendar.model.event.csvFile);
-    }
+    // downloadContent(){
+    //     console.log(calendar.model.event.csvFile);
+    // }
 
     _setEventData(type){
         this.model.event.summary = `Podróż do ${calendar.view.el.destination.value}, transport: ${type}`;
