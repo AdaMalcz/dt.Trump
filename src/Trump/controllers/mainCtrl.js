@@ -26,33 +26,36 @@ export default class TrumpCtrl {
   async renderSomething() {
     this.view._clearElementContent(this.view.el.apiContainer);
     
-    await this.modelDriving.update();
-    await this.modelWalking.update();
-    await this.modelBicycling.update();
-    await this.modelWeather.initialWeather();
-    this.view.render(
-      this.view.el.apiContainer,
-      await this.view.getMainContentMarkup(this.modelDriving.getData())
-    );
-    this.view.render(
-      this.view.el.apiContainer,
-      await this.view.getMainContentMarkup(this.modelWalking.getData())
-    );
-    this.view.render(
-      this.view.el.apiContainer,
-      await this.view.getMainContentMarkup(this.modelBicycling.getData())
-    );
-
-    
     try {
-      //document.querySelector('#fail').innerHTML = '';
-      await this.modelTransit.update();
+      await this.modelDriving.update();
+      await this.modelWalking.update();
+      await this.modelBicycling.update();
+      await this.modelWeather.initialWeather();
       this.view.render(
         this.view.el.apiContainer,
-        await this.view.getMainContentMarkup(this.modelTransit.getData())
+        await this.view.getMainContentMarkup(this.modelDriving.getData())
       );
-    } catch { 
-      document.querySelector('#msg').innerHTML = this.modelTransit.failMsg;
+      this.view.render(
+        this.view.el.apiContainer,
+        await this.view.getMainContentMarkup(this.modelWalking.getData())
+      );
+      this.view.render(
+        this.view.el.apiContainer,
+        await this.view.getMainContentMarkup(this.modelBicycling.getData())
+      );
+
+      
+      try {
+        await this.modelTransit.update();
+        this.view.render(
+          this.view.el.apiContainer,
+          await this.view.getMainContentMarkup(this.modelTransit.getData())
+        );
+      } catch { 
+        document.querySelector('#msg').innerHTML = `<span style="color:red">${this.modelTransit.failMsg}</span>`;
+      }
+    } catch{
+      document.querySelector('#msg').innerHTML = `<span style="color:red">${this.modelTransit.timeMsg}</span>`;
     }
   };
 

@@ -36,7 +36,7 @@ export default class MainContentView extends MainView{
       this._clearElementContent(this.el.journeyTitle);
       this._createElement(this.el.journeyTitle, 'h3', `Z: ${start}`, '', 'place-name');
       this._createElement(this.el.journeyTitle, 'h3', `Do: ${meta}`, '', 'place-name');
-      this._createElement(this.el.journeyTitle, 'p', `Wszystkie środki komunikacji dostępne`, 'msg', '');
+      this._createElement(this.el.journeyTitle, 'h3', `Wszystkie środki komunikacji dostępne`, 'msg', '');
       //tutaj będzie kod z wyświetlaniem danych z api
      
 
