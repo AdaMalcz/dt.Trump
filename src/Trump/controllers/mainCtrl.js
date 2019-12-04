@@ -8,6 +8,7 @@ import WalkingModel from '../models/walkingModel';
 import BicyclingModel from '../models/bicyclingModel';
 import TransitModel from '../models/transitModel';
 import WeatherModel from '../models/weatherModel';
+import QuoteCtrl from './quoteCtrl';
 
 export default class TrumpCtrl {
   constructor() {
@@ -21,6 +22,7 @@ export default class TrumpCtrl {
     this.modelTransit = new TransitModel();
     this.modelWeather = new WeatherModel();
     this.map = new MapCtrl();
+    this.quote = new QuoteCtrl();
   }
 
   async renderSomething() {
@@ -57,6 +59,10 @@ export default class TrumpCtrl {
     } catch{
       document.querySelector('#msg').innerHTML = `<span style="color:red">${this.modelTransit.timeMsg}</span>`;
     }
+
+    //this.quote.model.getRandomQuote();
+    await this.quote.model.getRandomQuote();
+    this.quote.view.init(this.quote.model.quote);
   };
 
 init() {

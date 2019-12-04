@@ -183,3 +183,7 @@ tr{
 .calendar {
     position: fixed;
 }
+
+#random_quote {
+    font-style: italic;
+}
