@@ -5,6 +5,7 @@ class BaseModel {
     //wpiszecie tu podstawowy adres api, this.baseApiUrl = ''
     //wpiszecie tu wymagane naglowki jak host czy klucz do api, this.headers = {}
     this.options = optionsObj;
+    this.timeMsg = "Podróż w czasie nie jest jeszcze możliwa. Podaj aktualną lub przyszłą datę.";
   }
 
 

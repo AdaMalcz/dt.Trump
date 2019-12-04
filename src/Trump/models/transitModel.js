@@ -14,7 +14,7 @@ class TransitModel extends BaseModel {
       this.timeStart = "",
       this.timeMeta = "",
       this.timeMeta2 = "",
-      this.failMsg = "Google Maps nie obsługuje komunikacji miejskiej we wskazanym mieście. Jeśli planujesz podróż międzymiastową spróbuj wpisać nazwę miasta (bez konkretnego asdresu)."
+      this.failMsg = "Google Maps nie obsługuje komunikacji miejskiej we wskazanym mieście. Jeśli planujesz podróż międzymiastową spróbuj wpisać nazwę miasta (bez konkretnego adresu)."
   }
 
   // w modelach będą funkcje asynchroniczne i pomocnicze do nich aby przekzaywać dane w odpowiednim formacie, na potrzeby testów zwracam zwykły obiekt
