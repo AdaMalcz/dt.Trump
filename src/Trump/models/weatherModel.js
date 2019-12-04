@@ -4,7 +4,7 @@ class WeatherModel extends BaseModel {
   constructor(optionsObj) {
     super(optionsObj);
     this.time = "";
-    window.update = this.update;
+    window.updateWeather = this.updateWeather;
   }
 
   async initialWeather() { 
@@ -23,14 +23,14 @@ class WeatherModel extends BaseModel {
       document.querySelector('.pressure').textContent = data.main.pressure +' hPa';
   }
 
-  async update(meta) {
+  async updateWeather(arrivalTime) {
     const weatherSampleInterval = 10800000; //3 hours in miliseconds
     let link = `https://api.openweathermap.org/data/2.5/forecast?lat=${window.coords.lat}&lon=${window.coords.long}&units=metric&appid=${process.env.API_WEATHER_KEY}`
     const res = await fetch(link);
     const data = await res.json();
     const firstDate = (new Date(data.list[0].dt_txt)).getTime();
-    const metaDate = (new Date(meta)).getTime();
-    let index = Math.abs(Math.round((metaDate-firstDate)/weatherSampleInterval));
+    arrivalTime = (new Date(arrivalTime)).getTime();
+    let index = Math.abs(Math.round((arrivalTime-firstDate)/weatherSampleInterval));
     if(index>=(data.list.length)) {
       window.alert("Przybędziesz na miejsce za ponad 5 dni. Wyświetlana jest aktualna pogoda");
       index = 0;

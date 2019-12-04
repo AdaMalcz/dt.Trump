@@ -1,6 +1,6 @@
 import MainView from "./mainView";
 import MapCtrl from "../controllers/mapCtrl";
-import CalendarCtrl from '../controllers/CalendarCtrl';
+import CalendarCtrl from '../controllers/calendarCtrl';
 import { runInContext } from "vm";
 import SearchModel from "../models/searchModel";
 import WeatherModel from "../models/weatherModel";
@@ -17,7 +17,7 @@ export default class MainContentView extends MainView{
   getMainContentMarkup(fetchedObj) {
       return `
         ${this.el.setIdMarkup}${fetchedObj.name}${this.el.nameMarkup}
-        <a onclick="calculateAndDisplayRoute('${fetchedObj.name}');update('${fetchedObj.timeMeta2}');">
+        <a onclick="calculateAndDisplayRoute('${fetchedObj.name}');updateWeather('${fetchedObj.timeMeta}');">
         ${fetchedObj.icon}<br>${fetchedObj.transport}</a>
         ${this.el.timeMarkup}
         ${fetchedObj.time}

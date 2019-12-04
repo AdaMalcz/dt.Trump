@@ -11,8 +11,7 @@ class WalkingModel extends BaseModel {
       this.dist = 0,
       this.naviLink = "https://www.google.com/",
       this.timeStart = "",
-      this.timeMeta = "",
-      this.timeMeta2 = ""
+      this.timeMeta = "";
   }
 
   // w modelach będą funkcje asynchroniczne i pomocnicze do nich aby przekzaywać dane w odpowiednim formacie, na potrzeby testów zwracam zwykły obiekt
@@ -23,11 +22,8 @@ class WalkingModel extends BaseModel {
       time: this.time,
       dist: this.dist,
       naviLink: this.naviLink,
-
       timeStart: this.timeStart,
       timeMeta: this.timeMeta,
-      timeMeta2: this.timeMeta2,
-
       duration: this.duration,
       icon: `<i class="fas fa-walking"></i>`
     }
@@ -55,16 +51,14 @@ class WalkingModel extends BaseModel {
     if(window.arrivalDeparture) {  // data wyjazdu
       console.log(this.searchModel.takeDateFromInput().toLocaleString())
       console.log(new Date(this.searchModel.takeDateFromInput().getTime()+trans.duration.value*1000).toLocaleString())
-      this.timeStart = this.searchModel.takeDateFromInput().toLocaleString()
-      this.timeMeta = new Date(this.searchModel.takeDateFromInput().getTime()+trans.duration.value*1000).toLocaleString()
-      this.timeMeta2 = new Date(this.searchModel.takeDateFromInput().getTime()+trans.duration.value*1000)
+      this.timeStart = this.searchModel.takeDateFromInput()
+      this.timeMeta = new Date(this.searchModel.takeDateFromInput().getTime()+trans.duration.value*1000)
     }
     else { // data przyjazdu
       console.log(new Date(this.searchModel.takeDateFromInput().getTime()-trans.duration.value*1000).toLocaleString())
       console.log(this.searchModel.takeDateFromInput().toLocaleString())
-      this.timeStart = new Date(this.searchModel.takeDateFromInput().getTime()-trans.duration.value*1000).toLocaleString()
-      this.timeMeta = this.searchModel.takeDateFromInput().toLocaleString()
-      this.timeMeta2 = this.searchModel.takeDateFromInput()
+      this.timeStart = new Date(this.searchModel.takeDateFromInput().getTime()-trans.duration.value*1000)
+      this.timeMeta = this.searchModel.takeDateFromInput()
     }
 
     this.duration = trans.duration.value;
