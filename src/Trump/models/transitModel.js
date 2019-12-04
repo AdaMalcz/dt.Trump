@@ -13,6 +13,7 @@ class TransitModel extends BaseModel {
       this.naviLink = "https://www.google.com/",
       this.timeStart = "",
       this.timeMeta = "",
+      this.timeMeta2 = "",
       this.failMsg = "Google Maps nie obsługuje komunikacji miejskiej we wskazanym mieście. Jeśli planujesz podróż międzymiastową spróbuj wpisać nazwę miasta (bez konkretnego asdresu)."
   }
 
@@ -28,6 +29,7 @@ class TransitModel extends BaseModel {
 
       timeStart: this.timeStart,
       timeMeta: this.timeMeta,
+      timeMeta2: this.timeMeta2,
 
       duration: this.duration,
       icon: `<i class="fas fa-bus"></i>`
@@ -81,6 +83,7 @@ class TransitModel extends BaseModel {
 
       this.timeStart = trans.departure_time.value.toLocaleString(),
       this.timeMeta = trans.arrival_time.value.toLocaleString(),
+      this.timeMeta2 = trans.arrival_time.value,
       console.log(trans.departure_time.value.toLocaleString()),
       console.log(trans.arrival_time.value.toLocaleString())
 

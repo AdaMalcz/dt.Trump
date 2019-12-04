@@ -7,7 +7,7 @@ import DrivingModel from '../models/drivingModel';
 import WalkingModel from '../models/walkingModel';
 import BicyclingModel from '../models/bicyclingModel';
 import TransitModel from '../models/transitModel';
-
+import WeatherModel from '../models/weatherModel';
 
 export default class TrumpCtrl {
   constructor() {
@@ -19,6 +19,7 @@ export default class TrumpCtrl {
     this.modelWalking = new WalkingModel();
     this.modelBicycling = new BicyclingModel();
     this.modelTransit = new TransitModel();
+    this.modelWeather = new WeatherModel();
     this.map = new MapCtrl();
   }
 
@@ -28,7 +29,7 @@ export default class TrumpCtrl {
     await this.modelDriving.update();
     await this.modelWalking.update();
     await this.modelBicycling.update();
-    
+    await this.modelWeather.initialWeather();
     this.view.render(
       this.view.el.apiContainer,
       await this.view.getMainContentMarkup(this.modelDriving.getData())
@@ -53,10 +54,6 @@ export default class TrumpCtrl {
     } catch { 
       document.querySelector('#msg').innerHTML = this.modelTransit.failMsg;
     }
-     // this.view.render(
-       // this.view.el.journeyTitle.querySelector(p),
-       // this.modelTransit.failMsg
-     // )};
   };
 
 init() {
